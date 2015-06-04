@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	
+    <TextView
+        android:id="@+id/tvhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/sh_tvgpstracker"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+        <LinearLayout
+            android:id="@+id/linlay1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvhome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp" >
+
+            <Button
+                android:id="@+id/trackerreqbutton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/ic_help"
+                android:text="@string/gt_GPSposReqBtn" />
+            
+        </LinearLayout>
+	
+        <LinearLayout
+            android:id="@+id/linlay2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linlay1"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp" >
+            
+            <TextView
+                android:id="@+id/tvphonenumberGPS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/cfg_tvphonenumberGPS" />
+            
+            <EditText
+                android:id="@+id/phonenumberGPS"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+				android:textSize="12sp"
+                android:inputType="phone"
+                android:ems="10" />
+            
+            <TextView
+                android:id="@+id/tvPosReqCmd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/cfg_tvPosReqCmd" />
+            
+            <EditText
+                android:id="@+id/PosReqCmd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+				android:textSize="12sp"
+                android:inputType="text"
+                android:ems="10" />
+            
+        </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/footer" />
+    
+    <Button
+	     android:id="@+id/exitbutton"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_above="@id/tvinfo"
+	     android:text="@string/com_exitbutton"
+	     />
+
+    <Button
+	     android:id="@+id/helpbutton"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:layout_above="@id/exitbutton"
+	     android:text="@string/sh_helpbutton" 
+	     />
+    
+    <ProgressBar
+        android:id="@+id/GPStrackPB"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvhome"
+        android:layout_centerHorizontal="true" />
+
+
+
+</RelativeLayout>

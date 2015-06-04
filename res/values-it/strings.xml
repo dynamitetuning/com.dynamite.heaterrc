@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TCRiscaldamento</string>
+    <string name="tab_config_name">Config</string>
+    <string name="tab_program_name">Timer</string>
+    <string name="tab_home_name">Home</string>
+    <string name="footer">TCRiscaldamento - Telecomando per riscaldamento </string>
+    <string name="helptext">Per poter utilizzare questa applicazione, è necessario inserire un numero cellulare valido nel tab \'Config\'.\n
+	Premendo i pulsanti di comando nel tab \'Home\', verrà inviato un SMS con il testo preconfigurato al numero salvato.\n
+	Per un avvio programmato usate il tab \'Timer\'.</string>
+	<string name="helptextGPS">Usate questo tab per inviare un SMS con il testo preconfigurato al numero salvato.\n
+	    Un possibile utilizzo è per la trasmissione della posizione attuale GPS tramite GPS-Tracker.</string>
+        
+    <string name="com_exitbutton">Esci</string>
+    <string name="com_infobutton">Info</string>
+    <string name="com_restoredfltbutton">Ripristino</string>
+    <string name="com_warning">ATTENZIONE</string>
+    <string name="com_restore_warning">State per ripristinare i valori standard. Confermare prego</string>
+    <string name="com_cancelbutton">Esci</string>
+    <string name="com_restorebutton">Ripristinare</string>
+    <string name="com_message_ok">Messaggio inviato!</string>
+    <string name="com_pos_btn">Prosegui</string>
+    <string name="com_cnfgErrTitle">Errore di configurazione</string>
+    <string name="com_cnfgErrTxt">Inserire un numero valido nel tab di configurazione.</string>
+    <string name="com_versionPre">Versione:\t\t</string>
+    <string name="com_smsCounter">Contatore SMS:\t</string>
+    <string name="com_SMSsendwarning">Sta per essere inviato un SMS all\'apparecchio remoto</string>
+    <string name="com_reset_btn">Contatore a 0</string>
+    <string name="com_reset_txt">Il contatore SMS è stato resettato</string>
+    <string name="com_Restartwarning">Riavviare l\'applicazione p.f.</string>
+    <string name="com_SMSsending">: SMS inviato come pianificato</string>
+    <string name="com_SMSsendingErr">: invio SMS non riuscito</string>
+    <string name="com_spinnerpromt">Scegliete</string>
+    <string name="com_backbutton">Indietro</string>
+    
+    <string name="cfg_tvphonenumber">Numero cellulare dell\'apparecchio remoto</string>
+    <string name="cfg_tvstartcmd">Comando per l\'avvio</string>
+    <string name="cfg_tvstopcmd">Comando per lo stop</string>
+    <string name="cfg_tvtempcmd">Comando per la richiesta di temperatura</string>
+    <string name="cfg_tvsummercmd">Comando per modalità estiva</string>
+    <string name="cfg_tvwintercmd">Comando per modalità invernale</string>
+    <string name="cfg_tvstatuscmd">Comando per richiesta di stato</string>
+    <string name="cfg_tvheatduration">Durata in minuti</string>
+    <string name="cfg_tvheatdurationcmd">Comando per la durata</string>
+    <string name="cfg_tvSMSfeedbackcmd">Comando per conferma tramite SMS</string>
+    <string name="cfg_tvSMSfeedback">Conferma tramite SMS</string>
+    <string name="cfg_savebutton">Salva</string>
+    <string name="cfg_tvinstruction">Premere il tasto \'salva\' dopo le modifiche</string>
+    <string name="cfg_checknumbertext">Il numero inserito non è valido</string>
+    <string name="cfg_cbsmssendwarning">Mostra avvertimento invio SMS</string>
+    <string name="cfb_cbGPStracker">Attivare Tab GPS-tracker</string>
+    <string name="cfg_tvPosReqCmd">Comando per richiesta posizione GPS</string>
+    <string name="cfg_tvphonenumberGPS">Numero cellulare del GPS-Tracker</string>
+    <string name="cfg_tvMaxSMScount">Limite massimo SMS inviati (0=illimitato)</string>
+    
+    <string name="prog_tvprogram">Selezionare l\'orario d\'avvio</string>
+    <string name="prog_setbutton">Invia l\'orario d\'avvio</string>
+    <string name="prog_schedbutton">Invio pianificato</string>
+    <string name="prog_delbutton">Disattiva piano</string>
+    <string name="prog_tvprogram_schedule">Scegliere giorni</string>
+    <string name="prog_schedrepeat">Ripetizioni:</string>
+    <string name="prog_showdetails">Mostra dettagli</string>
+    <string name="prog_sunday_initials">Do</string>
+    <string name="prog_monday_initials">Lu</string>
+    <string name="prog_tuesday_initials">Ma</string>
+    <string name="prog_wednesday_initials">Me</string>
+    <string name="prog_thursday_initials">Gi</string>
+    <string name="prog_friday_initials">Ve</string>
+    <string name="prog_saturday_initials">Sa</string>
+    <string name="prog_schedule_deactivated">-Timer è stato disattivato</string>
+    <string name="prog_scheduleToggleON">ATTIVO</string>
+    <string name="prog_scheduleToggleOFF">DISATTIVO</string>
+    <string name="prog_helpTitle">Aiuto</string>
+    <string name="prog_helpText">Scegliere \'Invio immediato\' se si desidera inviare il messaggio completo d\'orario.\n
+        Scegliere \'Invio pianificato\' se si desidera inviare il messaggio d\'avvio per l\'ora e il giorno pianificato.</string>
+    
+    <string name="sh_tvhome">Scegli un comando</string>
+    <string name="sh_startbutton">Avvia\n</string>
+    <string name="sh_stopbutton">Stop\n</string>
+    <string name="sh_tempbutton">Richiesta\ntempratura</string>
+    <string name="sh_summerbutton">Modalità\nestate</string>
+    <string name="sh_winterbutton">Modalità\ninverno</string>
+    <string name="sh_statusbutton">Richiedi\nstato</string>
+    <string name="sh_helpbutton">Istruzioni</string>
+    <string name="sh_tvgpstracker">Richiesta GPS-Tracker</string>
+    
+    <string name="gt_GPSposReqBtn">Richiesta posizione GPS</string>
+    
+    <string name="ad_lastsent">Ultimo SMS invitato</string>
+    <string name="ad_nextsend">Prossimo invio</string>
+    
+    <string name="dn_notificationTitle">TCRiscaldamento ha inviato un SMS</string>
+    <string name="dn_notificationText">Premere qui per detagli.</string>
+
+    <string-array name="selection_array">
+        <item>Invio immediato</item>
+        <item>Invio pianificato</item>
+    </string-array>
+
+</resources>

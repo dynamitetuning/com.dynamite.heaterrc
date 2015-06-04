@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CRcalorífero</string>
+    <string name="tab_config_name">Config</string>
+    <string name="tab_program_name">Timer</string>
+    <string name="tab_home_name">Home</string>
+    <string name="footer">CRcalorífero - Control remoto por calorífero</string>
+    <string name="helptext">Para utilizar esta aplicación, debe introducir un número válido de móvil en la pestaña \'Config\'.\n
+Al pulsar los botones de control en la pestaña \'Home\', se le enviará un SMS con el texto preconfigurado para este número.\n
+Para usar el inicio programada utilizar la pestaña \'Timer\'.</string>
+        
+    <string name="com_exitbutton">Salida</string>
+    <string name="com_infobutton">Info</string>
+    <string name="com_restoredfltbutton">Rehacer</string>
+    <string name="com_warning">¡Cuidado!</string>
+    <string name="com_restore_warning">Usted va a restaurar los valores predeterminados. Por favor, confirme</string>
+    <string name="com_cancelbutton">Salida</string>
+    <string name="com_restorebutton">Rehacer</string>
+    <string name="com_message_ok">Mensaje enviado!</string>
+    <string name="com_pos_btn">Continuar</string>
+    <string name="com_cnfgErrTitle">Error de configuración</string>
+    <string name="com_cnfgErrTxt">Introduzca un número válido en la pestaña de configuración.</string>
+    <string name="com_versionPre">Versión:\t\t</string>
+    <string name="com_smsCounter">Contador SMS:\t</string>
+    <string name="com_SMSsendwarning">Usted está a punto de enviar un SMS al dispositivo remoto</string>
+    
+    <string name="cfg_tvphonenumber">Número de teléfono móvil de dispositivo remoto</string>
+    <string name="cfg_tvstartcmd">Texto de mando para encender</string>
+    <string name="cfg_tvstopcmd">Texto de mando par apagar</string>
+    <string name="cfg_tvtempcmd">Texto de mando para la solicitud de la temperatura</string>
+    <string name="cfg_tvsummercmd">Texto de mando par operación verano</string>
+    <string name="cfg_tvwintercmd">Texto de mando par operación invierno</string>
+    <string name="cfg_tvstatuscmd">Texto de mando para consultar el estado</string>
+    <string name="cfg_tvheatduration">Duración en minutos</string>
+    <string name="cfg_tvheatdurationcmd">Texto de mando para duración</string>
+    <string name="cfg_tvSMSfeedbackcmd">Texto de mando para confirmación SMS</string>
+    <string name="cfg_tvSMSfeedback">confirmación para SMS</string>
+    <string name="cfg_savebutton">Memorizar</string>
+    <string name="cfg_tvinstruction">Pulse el botón \'Memorizar\' después de la modificación</string>
+    <string name="cfg_checknumbertext">El número introducido no es válido</string>
+    <string name="cfg_cbsmssendwarning">Mostrar alerta envío SMS</string>
+    
+    <string name="prog_tvprogram">Seleccione las horas de inicio</string>
+    <string name="prog_setbutton">Enviar las horas de inicio</string>
+    
+    <string name="sh_tvhome">Elija un comando</string>
+    <string name="sh_startbutton">Encender\n</string>
+    <string name="sh_stopbutton">Apagar\n</string>
+    <string name="sh_tempbutton">Solicitud\ntempratura</string>
+    <string name="sh_summerbutton">Operación\nverano</string>
+    <string name="sh_winterbutton">Operación\ninvierno</string>
+    <string name="sh_statusbutton">Consultar\nestado</string>
+    <string name="sh_helpbutton">Instrucciones</string>
+
+</resources>

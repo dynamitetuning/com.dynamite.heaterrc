@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<TextView
+    android:id="@+id/tvHeaderLastAlarm"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/ad_lastsent"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+<TextView  
+    android:id="@+id/tvalarmdetails"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" />
+<TextView
+    android:id="@+id/tvHeaderNextAlarm"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:text="@string/ad_nextsend"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+<TextView  
+    android:id="@+id/tvnextschedule"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" />
+<Button 
+    android:id="@+id/btnExit"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="48dp"
+    android:text="@string/com_backbutton"/>
+</LinearLayout>
