@@ -14,6 +14,7 @@
         Use the Timer tab for a timed start request.</string>
     <string name="helptextGPS">Use this tab to send a message with the configured text to the configured phone number.\n
         A possible application can be the GPS-Tracker which is using text messages for transmitting the GPS location.</string>
+    <string name="helpLink">https://github.com/dynamitetuning/com.dynamite.heaterrc/wiki/Help_EN</string>
         
     <string name="com_exitbutton">Exit</string>
     <string name="com_infobutton">Info</string>

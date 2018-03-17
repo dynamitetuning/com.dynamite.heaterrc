@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -63,7 +64,7 @@ public class StandHeizungActivity extends commonActivity {
         // initialize ProgressBar
         final ProgressBar sendingPB;
         sendingPB = (ProgressBar)findViewById(R.id.mainPB);
-        sendingPB.setVisibility(0xFF);
+        sendingPB.setVisibility(View.INVISIBLE);
               
      // set click listener on the exitBtn 
         exitBtn.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +79,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "Start Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));                
                 sendSMS(SMS_START_COMMAND);
@@ -90,7 +91,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "Stop Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_STOP_COMMAND = settings.getString(getString(R.string.sp_stopCmd), getString(R.string.cfg_stopcmd));
 
@@ -103,7 +104,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "Temperature Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_TEMP_COMMAND = settings.getString(getString(R.string.sp_tempCmd), getString(R.string.cfg_tempcmd));
                 
@@ -116,7 +117,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "summer Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_SUMMER_COMMAND = settings.getString(getString(R.string.sp_summerCmd), getString(R.string.cfg_summercmd));
                 
@@ -129,7 +130,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "winter Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_WINTER_COMMAND = settings.getString(getString(R.string.sp_winterCmd), getString(R.string.cfg_wintercmd));
                 
@@ -142,7 +143,7 @@ public class StandHeizungActivity extends commonActivity {
             public void onClick(View v) {
                 // Log.d(DEBUG_TAG, "status Button pressed");
                 SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_STATUS_COMMAND = settings.getString(getString(R.string.sp_statusCmd), getString(R.string.cfg_statuscmd));
                 
@@ -154,8 +155,9 @@ public class StandHeizungActivity extends commonActivity {
         infoBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Log.d(DEBUG_TAG, "Info Button pressed");
-            	
-            	showHelp();
+            	//showHelp();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.helpLink)));
+                startActivity(browserIntent);
             }
             });
         
@@ -184,7 +186,7 @@ public class StandHeizungActivity extends commonActivity {
         			winterBtn.setEnabled(SEND_BTN_ENABLED);
         			statusBtn.setEnabled(SEND_BTN_ENABLED);
         			if (SEND_BTN_ENABLED)
-        				sendingPB.setVisibility(0xFF);
+        				sendingPB.setVisibility(View.INVISIBLE);
         		}
        }
      };

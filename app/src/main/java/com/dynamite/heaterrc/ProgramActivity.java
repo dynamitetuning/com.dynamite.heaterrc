@@ -32,6 +32,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -84,7 +85,7 @@ public class ProgramActivity extends commonActivity {
     public void onResume(Bundle savedInstaceState){
     	// Log.d(DEBUG_TAG, "onResume has been called");
     }
-        
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,7 +202,7 @@ public class ProgramActivity extends commonActivity {
         setBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Log.d(DEBUG_TAG, "Set Button pressed");
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
                 
             	// Read Time
@@ -242,19 +243,18 @@ public class ProgramActivity extends commonActivity {
 		        }				
 			}
 		});
-        
-        sunday.setOnTouchListener(new View.OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
+
+        sunday.setOnTouchListener(new OnTouchListener() {
+        	public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 		        
 		        dayPressed(getString(R.string.sp_sunday));
 				return false;
 			}
-        	
         });
         
-        monday.setOnTouchListener(new View.OnTouchListener() {			
+        monday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
@@ -264,7 +264,7 @@ public class ProgramActivity extends commonActivity {
 			}
 		});
         
-        tuesday.setOnTouchListener(new View.OnTouchListener() {		
+        tuesday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
@@ -274,7 +274,7 @@ public class ProgramActivity extends commonActivity {
 			}
 		});
         
-        wednesday.setOnTouchListener(new View.OnTouchListener() {
+        wednesday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
@@ -284,7 +284,7 @@ public class ProgramActivity extends commonActivity {
 			}
 		});
         
-        thursday.setOnTouchListener(new View.OnTouchListener() {			
+        thursday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
@@ -294,7 +294,7 @@ public class ProgramActivity extends commonActivity {
 			}
 		});
         
-        friday.setOnTouchListener(new View.OnTouchListener() {			
+        friday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
@@ -304,7 +304,7 @@ public class ProgramActivity extends commonActivity {
 			}
 		});
         
-        saturday.setOnTouchListener(new View.OnTouchListener() {			
+        saturday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;

@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -107,11 +108,11 @@ public class GPStrackerActivity extends commonActivity {
             }
             });
         
-     // set click listener on the exitBtn 
+     // set click listener on the helpBtn
         helpBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Log.d("StandHeizungActivity:", "help Button pressed");        	
-            	showHelpGPS(); 
+            	showHelpGPS();
             }
             });
         
