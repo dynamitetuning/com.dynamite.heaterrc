@@ -69,7 +69,7 @@
 				    android:layout_marginTop="16dp"
 				    android:textOn="@string/prog_scheduleToggleON"
 				    android:textOff="@string/prog_scheduleToggleOFF"
-				    android:onClick="onToggleClicked"/>
+				    android:onClick="setOnClickListener"/>
 			</RelativeLayout>
 	
 			<TextView
@@ -179,7 +179,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/settime"
+        android:layout_below="@+id/spinner1"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -1,0 +1,25 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 8
+    buildToolsVersion "26.0.2"
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        // or if you would like to see all the build errors/warning, change the variable above to true.
+    }
+
+    defaultConfig {
+        applicationId "com.dynamite.heaterrc"
+        minSdkVersion 8
+        targetSdkVersion 8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
