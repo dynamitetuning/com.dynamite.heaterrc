@@ -58,7 +58,25 @@ public class myApp extends Application{
         int dayOfWeek = getNextWeekDay();
         
         Calendar calendar = Calendar.getInstance();
-    	int day = calendar.get(Calendar.DAY_OF_WEEK);        
+    	int day = calendar.get(Calendar.DAY_OF_WEEK);
+
+		//---PendingIntent to launch activity when the alarm triggers---
+		Intent i = new Intent("com.dynamite.heaterrc.DisplayNotifications");
+
+		//---assign an ID of 1---
+		i.putExtra("NotifID", 1);
+
+		PendingIntent displayIntent = PendingIntent.getActivity(
+				getBaseContext(), 0, i, 0);
+
+		//---PendingIntent to launch activity when the alarm triggers---
+		Intent sendStartSMS = new Intent(context, AlarmReceiver.class);
+		PendingIntent recurringSendSMS = PendingIntent.getBroadcast(context,
+				0, sendStartSMS, PendingIntent.FLAG_ONE_SHOT);
+		AlarmManager alarms = (AlarmManager) getSystemService(
+				Context.ALARM_SERVICE);
+		AlarmManager alarms2 =(AlarmManager) getSystemService(
+				Context.ALARM_SERVICE);
        
         if (dayOfWeek > 0)
         	updateTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
@@ -69,7 +87,13 @@ public class myApp extends Application{
 			SPeditor.putBoolean(getString(R.string.sp_schedule_active), false);
 	        SPeditor.putString(getString(R.string.sp_nextAlarm), "-"); 
 	        SPeditor.commit();
-        	return;
+	        try {
+				alarms.cancel(recurringSendSMS);
+				alarms2.cancel(recurringSendSMS);
+			} catch (NullPointerException npe){
+	        	npe.printStackTrace();
+			}
+			return;
         } else {
         	dayOfWeek = day;
         }
@@ -83,25 +107,7 @@ public class myApp extends Application{
         
         SPeditor.putString(getString(R.string.sp_nextAlarm), int2WeekDay(dayOfWeek)+" "+int2time(hourOfDay,minute))
         	.commit();
-         
-      //---PendingIntent to launch activity when the alarm triggers---                    
-        Intent i = new Intent("com.dynamite.heaterrc.DisplayNotifications");
 
-        //---assign an ID of 1---
-        i.putExtra("NotifID", 1);                                
-
-        PendingIntent displayIntent = PendingIntent.getActivity(
-            getBaseContext(), 0, i, 0);     
-        
-        //---PendingIntent to launch activity when the alarm triggers---  
-        Intent sendStartSMS = new Intent(context, AlarmReceiver.class);        
-        PendingIntent recurringSendSMS = PendingIntent.getBroadcast(context,
-                0, sendStartSMS, PendingIntent.FLAG_ONE_SHOT);         
-        AlarmManager alarms = (AlarmManager) getSystemService(
-                Context.ALARM_SERVICE);
-        AlarmManager alarms2 =(AlarmManager) getSystemService(
-        		Context.ALARM_SERVICE);
-        
         /* setRepeating(int type, long triggerAtMillis, long intervalMillis, PendingIntent operation)
         	Schedule a repeating alarm. */
         long checkTime = updateTime.getTimeInMillis()/1000;
@@ -113,14 +119,15 @@ public class myApp extends Application{
         	// Log.d(DEBUG_TAG, "actualTime="+actualTime+", checkTime="+checkTime);
         	updateTime.setTimeInMillis((checkTime+7*24*60*60)*1000);
         }
-        
-        alarms.setRepeating(AlarmManager.RTC_WAKEUP,
-                updateTime.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, recurringSendSMS);
-        alarms2.setRepeating(AlarmManager.RTC_WAKEUP,
-                updateTime.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, displayIntent);
-        // Log.d(DEBUG_TAG, "setRecurringAlarm="+updateTime.getTimeInMillis());
+        try {
+			alarms.set(AlarmManager.RTC_WAKEUP,
+					updateTime.getTimeInMillis(), recurringSendSMS);
+			alarms2.set(AlarmManager.RTC_WAKEUP,
+					updateTime.getTimeInMillis(), displayIntent);
+			// Log.d(DEBUG_TAG, "setRecurringAlarm="+updateTime.getTimeInMillis());
+		} catch (NullPointerException npe){
+        	npe.printStackTrace();
+		}
     }
 	
 	public int getNextWeekDay (){

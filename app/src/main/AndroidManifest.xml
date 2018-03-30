@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dynamite.heaterrc"
-    android:versionCode="14"
-    android:versionName="1.4" >
+    android:versionCode="15"
+    android:versionName="1.5" >
 
     <uses-sdk android:minSdkVersion="8" 
         android:targetSdkVersion="26"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     
     <application android:name=".myApp"
         android:allowBackup="true"

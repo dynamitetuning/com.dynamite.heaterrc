@@ -10,25 +10,14 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Firebase" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14284d67-a1a0-4b69-bb3d-50144177111d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/AlarmDetails.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/AlarmDetails.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/AlarmReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/AlarmReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/BootReceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/BootReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ConfigActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ConfigActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/DisplayNotifications.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/DisplayNotifications.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/GPStrackerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/GPStrackerActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ProgramActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ProgramActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SHtabWidget.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SHtabWidget.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SMSreceiver.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SMSreceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/StandHeizungActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/StandHeizungActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/commonActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/commonActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -54,7 +43,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="267">
@@ -83,6 +72,18 @@
             <state relative-caret-position="153">
               <caret line="9" column="106" lean-forward="false" selection-start-line="9" selection-start-column="106" selection-end-line="9" selection-end-column="106" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myApp.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="118" column="15" lean-forward="false" selection-start-line="118" selection-start-column="15" selection-end-line="118" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1847,9 +1848,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/BootReceiver.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ConfigActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/GPStrackerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SHtabWidget.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/SMSreceiver.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java" />
       </list>
     </option>
   </component>
@@ -2017,7 +2018,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522393731532" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522394522575" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2065,7 +2066,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522393731532" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522394522575" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2227,7 +2228,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522393731533" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522394522576" />
       </method>
     </configuration>
     <list size="1">
@@ -2270,7 +2271,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2686,14 +2686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="133" column="34" lean-forward="false" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/ProgramActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -2747,6 +2739,16 @@
       </provider>
       <provider editor-type-id="android-manifest">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/dynamite/heaterrc/myApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="118" column="15" lean-forward="false" selection-start-line="118" selection-start-column="15" selection-end-line="118" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
