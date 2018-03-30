@@ -51,7 +51,15 @@ public class AlarmReceiver extends BroadcastReceiver {
         int iDay = cal.get(Calendar.DAY_OF_WEEK);
         int iHour = cal.get(Calendar.HOUR_OF_DAY);
         int iMinute = cal.get(Calendar.MINUTE);
-        
+
+        if(settings.getBoolean(context.getString(R.string.sp_schedule_active), false)){
+			//Log.d(DEBUG_TAG,"Schedule is active");
+		} else {
+			//Log.d(DEBUG_TAG,"Schedule is not active. Exit.");
+			System.exit(0);
+		}
+
+
         String lastAlarm = weekDay + " " + int2time(iHour,iMinute);
         SPeditor.putString(context.getString(R.string.sp_lastAlarm), lastAlarm)
         .commit();
