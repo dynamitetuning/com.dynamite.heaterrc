@@ -30,7 +30,7 @@ public class BootReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 4);
+		final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         // final SharedPreferences.Editor SPeditor = settings.edit();
 		// TODO 
 		Log.d(DEBUG_TAG, "onReceive methode entered");

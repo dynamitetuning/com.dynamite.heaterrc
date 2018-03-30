@@ -42,7 +42,7 @@ public class StandHeizungActivity extends commonActivity {
         // Log.d(DEBUG_TAG, "onCreate has been called"); 
         
     	 // Restore preferences
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         
         // Button initialization

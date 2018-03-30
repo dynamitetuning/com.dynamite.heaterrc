@@ -42,7 +42,7 @@ public class GPStrackerActivity extends commonActivity {
         
         // Log.d("GPStrackerActivity:", "onCreate has been called");
 
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         
      // Button initialization
@@ -65,7 +65,7 @@ public class GPStrackerActivity extends commonActivity {
      // initialize ProgressBar
         final ProgressBar sendingPB;
         sendingPB = (ProgressBar)findViewById(R.id.GPStrackPB);
-        sendingPB.setVisibility(0xFF);
+        sendingPB.setVisibility(View.INVISIBLE);
                 
      // check actual configuration and enable buttons
         if (isPhoneNumberCorrect(settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber)))){
@@ -100,7 +100,7 @@ public class GPStrackerActivity extends commonActivity {
             public void onClick(View v) {
             	// Log.d("GPStrackerActivity:", "GPSposReqBtn Button pressed");
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false).commit();
-            	sendingPB.setVisibility(0x00);
+            	sendingPB.setVisibility(View.VISIBLE);
             	
                 String SMS_START_COMMAND = settings.getString(getString(R.string.sp_GPSposReqCmd), getString(R.string.cfg_GPSposReqCmd)); 
                 String DEST_NUMB = settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber));
@@ -145,7 +145,7 @@ public class GPStrackerActivity extends commonActivity {
            			// Log.d("GPStrackerActivity:", "sendBtnEnable="+SEND_BTN_ENABLED);
            			GPSposReqBtn.setEnabled(SEND_BTN_ENABLED);
            			if (SEND_BTN_ENABLED)
-           				sendingPB.setVisibility(0xFF);
+           				sendingPB.setVisibility(View.INVISIBLE);
            		}
            		tPhoneNumberGPS.setText(settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber)));
            		tPosReqCmd.setText(settings.getString(getString(R.string.sp_GPSposReqCmd), getString(R.string.cfg_GPSposReqCmd)));

@@ -42,10 +42,13 @@ public class AlarmDetails extends commonActivity {
             getSystemService(NOTIFICATION_SERVICE);
  
         //---cancel the notification---
-        nm.cancel(getIntent().getExtras().getInt("NotifID"));
-        
+        try {
+            nm.cancel(getIntent().getExtras().getInt("NotifID"));
+        } catch (NullPointerException npe){
+            npe.printStackTrace();
+        }
         // Restore preferences
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         // final SharedPreferences.Editor SPeditor = settings.edit();
         
         // initialize TextViews

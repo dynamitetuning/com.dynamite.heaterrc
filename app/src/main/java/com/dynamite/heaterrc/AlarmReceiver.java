@@ -26,18 +26,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class AlarmReceiver extends BroadcastReceiver {
-    // private static final String DEBUG_TAG = "AlarmReceiver";
+    //private static final String DEBUG_TAG = "AlarmReceiver";
     public static final String PREFS_NAME = "MyPrefsFile";
     public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
     
     @Override
     public void onReceive(Context context, Intent intent) {
         // Log.d(DEBUG_TAG, "Recurring alarm; requesting an action.");
-        final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         final myApp appState = ((myApp)context.getApplicationContext());
         
@@ -90,7 +93,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     
     public void sendSMS2numb (Context context, String s_destNumb, String s_msg, boolean GPStracker){
 		SmsManager sms = SmsManager.getDefault();
-    	SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 4);
+    	SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
         String SMS_DEST_NUMBER = s_destNumb;
         
@@ -99,10 +102,15 @@ public class AlarmReceiver extends BroadcastReceiver {
                 
         if((SMS_DEST_NUMBER.contentEquals("0"))||(SMS_DEST_NUMBER == null)){
         	// Log.d(DEBUG_TAG, "Config Error, destination is empty");
-        	Toast toast = Toast.makeText(context, context.getString(R.string.app_name)+
-        			context.getString(R.string.com_SMSsendingErr), Toast.LENGTH_LONG);
-			toast.show();
-			// Add info to taskbar
+        	try {
+				Toast toast = Toast.makeText(context, context.getString(R.string.app_name)+
+						context.getString(R.string.com_SMSsendingErr), Toast.LENGTH_LONG);
+				toast.show();
+				// Add info to taskbar
+			} catch (Resources.NotFoundException rnfe) {
+        		rnfe.printStackTrace();
+        		//Log.d(DEBUG_TAG, "catched exception: " + e.toString());
+			}
         }
         else {  // Send SMS only if destination number has been entered       	
         	// Increment SMS counter

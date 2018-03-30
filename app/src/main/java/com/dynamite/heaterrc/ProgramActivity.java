@@ -37,7 +37,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -54,9 +53,9 @@ public class ProgramActivity extends commonActivity {
 	
 	/** Called when the activity is first created. */
 	public static final String PREFS_NAME = "MyPrefsFile";
-	public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
+	//public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
     public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
-    public int SMS_RESULT_COUNTER=0;
+    //public int SMS_RESULT_COUNTER=0;
 	SharedPreferences.OnSharedPreferenceChangeListener listener;
 	private final int IPC_ID = 1122;
     
@@ -65,8 +64,8 @@ public class ProgramActivity extends commonActivity {
 	Button helpschedBtn;
 	ProgressBar sendingPB;
 	TimePicker setTime;
-    RadioButton RB0;
-    RadioButton RB1;
+    //RadioButton RB0;
+    //RadioButton RB1;
     ViewFlipper VF;
     Button sunday;
     Button monday;
@@ -94,7 +93,7 @@ public class ProgramActivity extends commonActivity {
         // Log.d(DEBUG_TAG, "onCreate has been called");
         
      // Restore preferences
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         
         // Button initialization
@@ -108,7 +107,7 @@ public class ProgramActivity extends commonActivity {
         
         // initialize ProgressBar
         sendingPB = (ProgressBar)findViewById(R.id.programPB);
-        sendingPB.setVisibility(0xFF);
+        sendingPB.setVisibility(View.INVISIBLE);
         
         // initialize ToggleButton
         scheduleToggle = (ToggleButton)findViewById(R.id.scheduletoggle);
@@ -151,7 +150,7 @@ public class ProgramActivity extends commonActivity {
         saturday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_saturday), false)));
         
         
-        /** Get the current time */
+        /* Get the current time */
         final Calendar cal = Calendar.getInstance();
         pHour = cal.get(Calendar.HOUR_OF_DAY);
         pMinute = cal.get(Calendar.MINUTE);
@@ -360,7 +359,7 @@ public class ProgramActivity extends commonActivity {
 	        	// Log.d(DEBUG_TAG, "sendBtnEnable="+SEND_BTN_ENABLED);
 	        	setBtn.setEnabled(SEND_BTN_ENABLED);
 	        	if(SEND_BTN_ENABLED)
-	        		sendingPB.setVisibility(0xFF);
+	        		sendingPB.setVisibility(View.INVISIBLE);
 	        }
 	        else if (key.compareTo(getString(R.string.sp_scheduledSend))==0){
 	        	if (settings.getBoolean(getString(R.string.sp_scheduledSend), false)){
@@ -372,13 +371,13 @@ public class ProgramActivity extends commonActivity {
 	        	
 	        }
 	        else if (key.compareTo(getString(R.string.sp_schedule_active))==0){
+				myApp appStates = ((myApp)getApplicationContext());
 	        	if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
 	        		// Log.d(DEBUG_TAG, "Schedule has been activated");
-	        		myApp appStates = ((myApp)getApplicationContext());
 	        		appStates.setRecurringAlarm(getApplicationContext());
 	        	} else {
 	        		// Log.d(DEBUG_TAG, "Schedule has been deactivated");
-	        		delAlarm(getApplicationContext());
+	        		delAlarm(appStates.getApplicationContext());
 	        		// When Schedule has been deactivated, there is no next alarm
 	        		SPeditor.putString(getString(R.string.sp_nextAlarm), "-").commit();
 	        		if (scheduleToggle.isChecked()){
@@ -404,8 +403,12 @@ public class ProgramActivity extends commonActivity {
                 0, downloader, PendingIntent.FLAG_CANCEL_CURRENT);
         AlarmManager alarms = (AlarmManager) getSystemService(
                 Context.ALARM_SERVICE);
-        alarms.cancel(recurringSendSMS);
-        
+        try {
+			alarms.cancel(recurringSendSMS);
+		} catch (NullPointerException npe){
+        	npe.printStackTrace();
+			// Log.d(DEBUG_TAG, "Alarm could not be cancelled!");
+		}
     }
     
     private void updateWeekBtn(String weekday, boolean btnset){
@@ -429,7 +432,7 @@ public class ProgramActivity extends commonActivity {
     }
     
     private void updateWeekBtn(){
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
    		monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
    		tuesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_tuesday), false)));
@@ -447,7 +450,7 @@ public class ProgramActivity extends commonActivity {
     }
     
     private boolean dayPressed(String weekday){
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
 
     	SPeditor.putString(getString(R.string.sp_lastTouched), weekday);
@@ -483,7 +486,7 @@ public class ProgramActivity extends commonActivity {
          
     /** Displays a notification when the time is updated */
     private void displayToast() {
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         String lastTouched = settings.getString(getString(R.string.sp_lastTouched), "-");
     	Toast.makeText(this, new StringBuilder().append("Time choosen is ").append(int2time(pHour,pMinute)),   Toast.LENGTH_SHORT).show();

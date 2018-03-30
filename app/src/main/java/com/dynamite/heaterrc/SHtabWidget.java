@@ -31,7 +31,7 @@ public class SHtabWidget extends TabActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 	    final String PREFS_NAME = "MyPrefsFile";
-	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
 	    Resources res = getResources(); // Resource object to get Drawables
 	    TabHost tabHost = getTabHost();  // The activity TabHost

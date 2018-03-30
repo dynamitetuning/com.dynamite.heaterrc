@@ -4,11 +4,11 @@ android {
     compileSdkVersion 8
     buildToolsVersion "26.0.2"
 
-    //lintOptions {
-    //    checkReleaseBuilds false
-    //    abortOnError false
-        // or if you would like to see all the build errors/warning, change the variable above to true.
-    //}
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        /* or if you would like to see all the build errors/warning, change the variable above to true. */
+    }
 
     defaultConfig {
         applicationId "com.dynamite.heaterrc"

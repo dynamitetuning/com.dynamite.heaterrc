@@ -35,7 +35,7 @@ public class SMSreceiver extends BroadcastReceiver{
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Bundle bundle = intent.getExtras();
-		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 4);
+		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
 // TODO Garbage collected?
 		// Log.d(DEBUG_TAG, "Entered onReceive method...");
@@ -104,8 +104,10 @@ public class SMSreceiver extends BroadcastReceiver{
 			}
 		} catch(IndexOutOfBoundsException iobe){
 			// Log.w(DEBUG_TAG, "IooBException thrown=" + iobe.toString());
+			iobe.printStackTrace();
 		} catch(Exception e){
 			// Log.w(DEBUG_TAG, "Exception thrown=" + e.toString());
+			e.printStackTrace();
 		}
 	}
 }

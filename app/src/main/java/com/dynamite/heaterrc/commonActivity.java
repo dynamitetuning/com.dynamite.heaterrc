@@ -42,9 +42,18 @@ public abstract class commonActivity extends Activity{
 	public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
 	public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
 	public static final String PREFS_NAME = "MyPrefsFile";
+	public BroadcastReceiver bcr;
 	// private static final String DEBUG_TAG = "commonActivity";
 
-	// Methods	
+	// Methods
+	public void onDestroy(){
+		super.onDestroy();
+		try {
+			unregisterReceiver(bcr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        
@@ -52,13 +61,13 @@ public abstract class commonActivity extends Activity{
 	        
 	        try {
 		        // Register broadcast receivers for SMS sent and delivered intents
-		        registerReceiver(new BroadcastReceiver() {
+		        registerReceiver(bcr = new BroadcastReceiver() {
 		            
 		        	@Override
 		            public void onReceive(Context context, Intent intent) {
 		                String message = null;
 		                boolean error = true;
-		                final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+		                final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 		                final SharedPreferences.Editor SPeditor = settings.edit();
 		                switch (getResultCode()) {
 		                case Activity.RESULT_OK:
@@ -133,7 +142,7 @@ public abstract class commonActivity extends Activity{
 	
 	public void sendSMS(String s_msg){
 		String PREFS_NAME = "MyPrefsFile";
-    	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	sendSMS2numb(settings.getString(getString(R.string.sp_destNumb), "0"), s_msg, false);
     }
 	
@@ -141,7 +150,7 @@ public abstract class commonActivity extends Activity{
 		SmsManager sms = SmsManager.getDefault();
     	myApp appState = ((myApp)getApplicationContext());
     	String PREFS_NAME = "MyPrefsFile";
-    	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
         String SMS_DEST_NUMBER = s_destNumb;
         
@@ -217,7 +226,7 @@ public abstract class commonActivity extends Activity{
 	
 	public void showInfo(PackageInfo pInfo){
 		final String PREFS_NAME = "MyPrefsFile";
-	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 	    final SharedPreferences.Editor SPeditor = settings.edit();
 
 		String s_appname = getString(R.string.app_name);
@@ -316,7 +325,7 @@ public abstract class commonActivity extends Activity{
 			})
 	        .setPositiveButton(getString(R.string.com_restorebutton), new DialogInterface.OnClickListener() {
 	            public void onClick(DialogInterface dialog, int id) {
-	            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+	            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 	                SharedPreferences.Editor SPeditor = settings.edit();
 	            	int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
 	            	SPeditor.clear().commit();
@@ -337,7 +346,7 @@ public abstract class commonActivity extends Activity{
      */
     public void showPopupPlus(String s_title, String s_msg, String s_negBtntxt, String s_posBtntxt, final String s_prefs){
     	final String PREFS_NAME = "MyPrefsFile";
-	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 	    final SharedPreferences.Editor SPeditor = settings.edit();
     	// build dialog box to display message
 	    AlertDialog.Builder builder = new AlertDialog.Builder(this);

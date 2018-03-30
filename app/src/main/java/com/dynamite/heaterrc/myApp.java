@@ -48,7 +48,7 @@ public class myApp extends Application{
         // we know mobiletuts updates at right around 1130 GMT.
         // let's grab new stuff at around 11:45 GMT, inexactly
     	// Log.d(DEBUG_TAG, "setRecurringAlarm called ");
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	final SharedPreferences.Editor SPeditor = settings.edit();
     	final Calendar cal = Calendar.getInstance();
     	
@@ -106,7 +106,7 @@ public class myApp extends Application{
         	Schedule a repeating alarm. */
         long checkTime = updateTime.getTimeInMillis()/1000;
         // check if time is in the past and correct it.
-        /** Get the current time */
+        /* Get the current time */
         long actualTime = cal.getTimeInMillis()/1000;
         if (actualTime > checkTime){
         	// Shift for one week
@@ -124,7 +124,7 @@ public class myApp extends Application{
     }
 	
 	public int getNextWeekDay (){
-	    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+	    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 	    	
 	    	Time t = new Time();
 	    	int hour = -1;

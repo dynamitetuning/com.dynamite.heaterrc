@@ -38,7 +38,7 @@ public class DisplayNotifications extends commonActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);     
         
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         
         try {
@@ -87,8 +87,12 @@ public class DisplayNotifications extends commonActivity {
         
         //---get the notification ID for the notification; 
         // passed in by the MainActivity---
-        int notifID = getIntent().getExtras().getInt("NotifID");
- 
+		int notifID = 0;
+		try {
+			notifID = getIntent().getExtras().getInt("NotifID");
+		} catch (NullPointerException npe){
+        	npe.printStackTrace();
+		}
         //---PendingIntent to launch activity if the user selects 
         // the notification---
         Intent i = new Intent("com.dynamite.heaterrc.AlarmDetails");

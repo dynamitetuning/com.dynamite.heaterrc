@@ -40,7 +40,7 @@ public class ConfigActivity extends commonActivity {
         
         // Log.d(DEBUG_TAG, "onCreate has been called");
 
-        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, 4);
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
         
         // Button initialization
@@ -52,10 +52,10 @@ public class ConfigActivity extends commonActivity {
         smsFeedback.setChecked(settings.getBoolean(getString(R.string.sp_smsFeedback), true));
         final CheckBox smsSendWarning = (CheckBox)findViewById(R.id.ShowSMSwarning);
         smsSendWarning.setChecked(settings.getBoolean(getString(R.string.sp_sendSMSwarning), false));
-        smsSendWarning.setVisibility(0xFF); // make this option invisible for the time being.
+        smsSendWarning.setVisibility(View.INVISIBLE); // make this option invisible for the time being.
         final CheckBox GPStracker = (CheckBox)findViewById(R.id.EnableGPStracker);
         GPStracker.setChecked(settings.getBoolean(getString(R.string.sp_GPStrackerTab), false));
-        GPStracker.setVisibility(0x00); // make this option invisible for the time being (0xFF=invisible).
+        GPStracker.setVisibility(View.VISIBLE); // make this option invisible for the time being (0xFF=invisible).
         
 
         // initialize EditText
