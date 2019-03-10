@@ -103,4 +103,5 @@
         <item>Envoi immédiat</item>
         <item>Envoi prévu</item>
     </string-array>
+    <string name="com_SMSreceived">" Réponse de l'appareil avec numéro de téléphone:"</string>
 </resources>

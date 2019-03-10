@@ -87,7 +87,7 @@
     
     <string name="gt_GPSposReqBtn">Richiesta posizione GPS</string>
     
-    <string name="ad_lastsent">Ultimo SMS invitato</string>
+    <string name="ad_lastsent">Ultimo SMS inviato</string>
     <string name="ad_nextsend">Prossimo invio</string>
     
     <string name="dn_notificationTitle">TCRiscaldamento ha inviato un SMS</string>
@@ -97,5 +97,6 @@
         <item>Invio immediato</item>
         <item>Invio pianificato</item>
     </string-array>
+    <string name="com_SMSreceived">Risposta dal dispositivo con numero di telefono:</string>
 
 </resources>

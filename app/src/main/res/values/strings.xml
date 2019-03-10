@@ -2,25 +2,25 @@
 <resources>
 
     <string name="app_name">HeaterRC</string>
-    <string name="authortitle">Author:\t\t</string>
-    <string name="authorname">DynamiteTuning</string>
+    <string name="authortitle" translatable="false">Author:\t\t</string>
+    <string name="authorname" translatable="false">DynamiteTuning</string>
     <string name="tab_config_name">Config</string>
     <string name="tab_program_name">Timer</string>
     <string name="tab_home_name">Home</string>
-    <string name="tab_gpstrack_name">GPS-Tracker</string>
+    <string name="tab_gpstrack_name" translatable="false">GPS-Tracker</string>
     <string name="footer">HeaterRC - Remote control for your heater </string>
     <string name="helptext">Before you can start to use this application, please enter a valid phone number in the Config tab.\n
         By pressing the command buttons in the Home tab, a message with the configured text is sent to the stored phone number.\n
         Use the Timer tab for a timed start request.</string>
     <string name="helptextGPS">Use this tab to send a message with the configured text to the configured phone number.\n
         A possible application can be the GPS-Tracker which is using text messages for transmitting the GPS location.</string>
-    <string name="helpLink">https://github.com/dynamitetuning/com.dynamite.heaterrc/wiki/Help_EN</string>
+    <string name="helpLink" translatable="false">https://github.com/dynamitetuning/com.dynamite.heaterrc/wiki/Help_EN</string>
         
     <string name="com_exitbutton">Exit</string>
     <string name="com_infobutton">Info</string>
     <string name="com_restoredfltbutton">Restore defaults</string>
     <string name="com_warning">WARNING</string>
-    <string name="com_error">ERROR</string>
+    <string name="com_error" translatable="false">ERROR</string>
     <string name="com_restore_warning">You are going to restore the default values. Please confirm</string>
     <string name="com_cancelbutton">Cancel</string>
     <string name="com_restorebutton">Restore</string>
@@ -44,25 +44,25 @@
     <string name="com_prepaidRecharge">The prepaid credit of your remote device is used up. Please recharge and update the value in the config tab.\n Set the values to zero to disable this notification.</string>
     
     <string name="cfg_tvphonenumber">Phone number of remote device</string>
-    <string name="cfg_phonenumber">0</string>
+    <string name="cfg_phonenumber" translatable="false">0</string>
     <string name="cfg_tvstartcmd">Command for start</string>
-    <string name="cfg_startcmd">START</string>
+    <string name="cfg_startcmd" translatable="false">START</string>
     <string name="cfg_tvstopcmd">Command for stop</string>
-    <string name="cfg_stopcmd">STOP</string>
+    <string name="cfg_stopcmd" translatable="false">STOP</string>
     <string name="cfg_tvtempcmd">Command for temperature request</string>
-    <string name="cfg_tempcmd">TEMP</string>
+    <string name="cfg_tempcmd" translatable="false">TEMP</string>
     <string name="cfg_tvsummercmd">Command for switch to Summer mode</string>
-    <string name="cfg_summercmd">SUMMER</string>
+    <string name="cfg_summercmd" translatable="false">SUMMER</string>
     <string name="cfg_tvwintercmd">Command for switch to Winter mode</string>
-    <string name="cfg_wintercmd">WINTER</string>
+    <string name="cfg_wintercmd" translatable="false">WINTER</string>
     <string name="cfg_tvstatuscmd">Command for status request</string>
-    <string name="cfg_statuscmd">STATUS</string>
+    <string name="cfg_statuscmd" translatable="false">STATUS</string>
     <string name="cfg_tvheatdurationcmd">Command for heat duration</string>
-    <string name="cfg_heattimercmd">1234TIMER1:</string>
+    <string name="cfg_heattimercmd" translatable="false">1234TIMER1:</string>
     <string name="cfg_tvheatduration">Heating duration in minutes</string>
-    <string name="cfg_heatduration">060</string>
+    <string name="cfg_heatduration" translatable="false">060</string>
     <string name="cfg_tvSMSfeedbackcmd">Command for SMS feedback enabling</string>
-    <string name="cfg_SMSfeedbackcmd">1234ASPONSE:</string>
+    <string name="cfg_SMSfeedbackcmd" translatable="false">1234ASPONSE:</string>
     <string name="cfg_tvSMSfeedback">SMS feedback from device</string>
     <string name="cfg_savebutton">Save</string>
     <string name="cfg_tvinstruction">Press the \'save\' button after configuration changes</string>
@@ -70,15 +70,15 @@
     <string name="cfg_cbsmssendwarning">Show SMS send warning</string>
     <string name="cfb_cbGPStracker">Enable GPS-tracker Tab</string>
     <string name="cfg_configsaved">Configuration saved successfully</string>
-    <string name="cfg_GPSposReqCmd">$WP+GETLOCATION=0000</string>
+    <string name="cfg_GPSposReqCmd" translatable="false">$WP+GETLOCATION=0000</string>
     <string name="cfg_tvPosReqCmd">Command for GPS position request</string>
     <string name="cfg_tvphonenumberGPS">Phone number of remote device</string>
     <string name="cfg_tvMaxSMScount">Maximum number of SMS to send (0=unlimited)</string>
-    <string name="cfg_maxSMScount">0</string>
+    <string name="cfg_maxSMScount" translatable="false">0</string>
     <string name="cfg_tvPrepaidCredit">Remaining Prepaid credit of remote device</string>
-    <string name="cfg_prepaidCredit">0.0</string>
+    <string name="cfg_prepaidCredit" translatable="false">0.0</string>
     <string name="cfg_tvSMScost">Price of an SMS for the remote device</string>
-    <string name="cfg_SMScost">0.0</string>
+    <string name="cfg_SMScost" translatable="false">0.0</string>
     
     <string name="prog_tvprogram">Select the start time</string>
     <string name="prog_setbutton">Send Start Time</string>
@@ -113,46 +113,46 @@
     
     <string name="gt_GPSposReqBtn">Request GPS position</string>
 
-    <string name="sp_MyPrefsFile">MyPrefsFile</string>
-    <string name="sp_destNumb">destNumb</string>
-    <string name="sp_startCmd">startCmd</string>
-    <string name="sp_stopCmd">stopCmd</string>
-    <string name="sp_tempCmd">tempCmd</string>
-    <string name="sp_summerCmd">summerCmd</string>
-    <string name="sp_winterCmd">winterCmd</string>
-    <string name="sp_statusCmd">statusCmd</string>
-    <string name="sp_smsCounter">smsCounter</string>
-    <string name="sp_sendBtnEnabled">sendBtnEnabled</string>
-    <string name="sp_heatDurationCmd">heatDurationCmd</string>
-    <string name="sp_heatDuration">heatDuration</string>
-    <string name="sp_heatDurationresult">heatDurationresult</string>
-    <string name="sp_smsFeedbackCmd">smsFeedbackCmd</string>
-    <string name="sp_smsFeedback">smsFeedback</string>
-    <string name="sp_SMSfeedbackresult">SMSfeedbackresult</string>
-    <string name="sp_sendSMSwarning">sendSMSwarning</string>
-    <string name="sp_receivedSMSfb">receivedSMSfb</string>
-    <string name="sp_GPStrackerTab">GPStrackerTab</string>
-    <string name="sp_GPSposReqCmd">GPSposReqCmd</string>
-    <string name="sp_destNumbGPS">destNumbGPS</string>
-    <string name="sp_sendBtnEnabledGPS">sendBtnEnabledGPS</string>
-    <string name="sp_scheduledSend">scheduledSend</string>
-    <string name="sp_sunday">Sunday</string>
-    <string name="sp_monday">Monday</string>
-    <string name="sp_tuesday">Tuesday</string>
-    <string name="sp_wednesday">Wednesday</string>
-    <string name="sp_thursday">Thursday</string>
-    <string name="sp_friday">Friday</string>
-    <string name="sp_saturday">Saturday</string>
-    <string name="sp_TimePickerHour">TimePickerHour</string>
-    <string name="sp_TimePickerMin">TimePickerMin</string>
-    <string name="sp_maxSMScount">maxSMScount</string>
-    <string name="sp_progSpinnerPos">progSpinnerPos</string>
-    <string name="sp_lastTouched">lastTouched</string>
-    <string name="sp_lastAlarm">lastAlarm</string>
-    <string name="sp_nextAlarm">nextAlarm</string>
-    <string name="sp_schedule_active">schedule_active</string>
-    <string name="sp_prepaidCredit">prepaidCredit</string>
-    <string name="sp_SMScost">SMScost</string>
+    <string name="sp_MyPrefsFile" translatable="false">MyPrefsFile</string>
+    <string name="sp_destNumb" translatable="false">destNumb</string>
+    <string name="sp_startCmd" translatable="false">startCmd</string>
+    <string name="sp_stopCmd" translatable="false">stopCmd</string>
+    <string name="sp_tempCmd" translatable="false">tempCmd</string>
+    <string name="sp_summerCmd" translatable="false">summerCmd</string>
+    <string name="sp_winterCmd" translatable="false">winterCmd</string>
+    <string name="sp_statusCmd" translatable="false">statusCmd</string>
+    <string name="sp_smsCounter" translatable="false">smsCounter</string>
+    <string name="sp_sendBtnEnabled" translatable="false">sendBtnEnabled</string>
+    <string name="sp_heatDurationCmd" translatable="false">heatDurationCmd</string>
+    <string name="sp_heatDuration" translatable="false">heatDuration</string>
+    <string name="sp_heatDurationresult" translatable="false">heatDurationresult</string>
+    <string name="sp_smsFeedbackCmd" translatable="false">smsFeedbackCmd</string>
+    <string name="sp_smsFeedback" translatable="false">smsFeedback</string>
+    <string name="sp_SMSfeedbackresult" translatable="false">SMSfeedbackresult</string>
+    <string name="sp_sendSMSwarning" translatable="false">sendSMSwarning</string>
+    <string name="sp_receivedSMSfb" translatable="false">receivedSMSfb</string>
+    <string name="sp_GPStrackerTab" translatable="false">GPStrackerTab</string>
+    <string name="sp_GPSposReqCmd" translatable="false">GPSposReqCmd</string>
+    <string name="sp_destNumbGPS" translatable="false">destNumbGPS</string>
+    <string name="sp_sendBtnEnabledGPS" translatable="false">sendBtnEnabledGPS</string>
+    <string name="sp_scheduledSend" translatable="false">scheduledSend</string>
+    <string name="sp_sunday" translatable="false">Sunday</string>
+    <string name="sp_monday" translatable="false">Monday</string>
+    <string name="sp_tuesday" translatable="false">Tuesday</string>
+    <string name="sp_wednesday" translatable="false">Wednesday</string>
+    <string name="sp_thursday" translatable="false">Thursday</string>
+    <string name="sp_friday" translatable="false">Friday</string>
+    <string name="sp_saturday" translatable="false">Saturday</string>
+    <string name="sp_TimePickerHour" translatable="false">TimePickerHour</string>
+    <string name="sp_TimePickerMin" translatable="false">TimePickerMin</string>
+    <string name="sp_maxSMScount" translatable="false">maxSMScount</string>
+    <string name="sp_progSpinnerPos" translatable="false">progSpinnerPos</string>
+    <string name="sp_lastTouched" translatable="false">lastTouched</string>
+    <string name="sp_lastAlarm" translatable="false">lastAlarm</string>
+    <string name="sp_nextAlarm" translatable="false">nextAlarm</string>
+    <string name="sp_schedule_active" translatable="false">schedule_active</string>
+    <string name="sp_prepaidCredit" translatable="false">prepaidCredit</string>
+    <string name="sp_SMScost" translatable="false">SMScost</string>
     
     <string name="ad_lastsent">Last sent SMS</string>
     <string name="ad_nextsend">Next SMS to send</string>

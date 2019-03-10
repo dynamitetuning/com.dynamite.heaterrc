@@ -33,7 +33,7 @@
     <string name="com_SMSsendingErr">: SMS konnte nicht gesendet werden</string>
     <string name="com_spinnerpromt">Bitte wählen</string>
     <string name="com_backbutton">Zurück</string>
-    <string name="com_smsCounterExceed">Der SMS Zähler ist grösser als </string>
+    <string name="com_smsCounterExceed">Der SMS Zähler ist größer als </string>
     <string name="com_PrepaidCreditTitle">Prepaid Guthaben:\t</string>
     <string name="com_prepaidRecharge">Das Prepaid-Guthaben des Heizgerätes ist aufgebraucht. Bitte aufladen und Wert im Konfig-Tab aktualisieren.\n Wert auf null setzen um Meldung zu deaktivieren.</string>
     
@@ -103,4 +103,5 @@
         <item>SMS sofort senden</item>
         <item>Zeitplanmässiges Senden</item>
     </string-array>
+    <string name="com_SMSreceived">Antwort vom Gerät mit Telefonnummer:</string>
 </resources>

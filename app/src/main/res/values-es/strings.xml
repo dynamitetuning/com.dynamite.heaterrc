@@ -9,6 +9,8 @@
     <string name="helptext">Para utilizar esta aplicación, debe introducir un número válido de móvil en la pestaña \'Config\'.\n
 Al pulsar los botones de control en la pestaña \'Home\', se le enviará un SMS con el texto preconfigurado para este número.\n
 Para usar el inicio programada utilizar la pestaña \'Timer\'.</string>
+    <string name="helptextGPS">Use esta pestaña para enviar un mensaje con el texto configurado al número de teléfono configurado.\n
+        Una posible aplicación puede ser el GPS-Tracker, que utiliza mensajes de texto para transmitir la ubicación del GPS.</string>
         
     <string name="com_exitbutton">Salida</string>
     <string name="com_infobutton">Info</string>
@@ -52,5 +54,12 @@ Para usar el inicio programada utilizar la pestaña \'Timer\'.</string>
     <string name="sh_winterbutton">Operación\ninvierno</string>
     <string name="sh_statusbutton">Consultar\nestado</string>
     <string name="sh_helpbutton">Instrucciones</string>
+    <string name="com_SMSreceived">Respuesta del dispositivo con número de teléfono:</string>
+    <string name="dn_notificationText">Presione aquí para más detalles.</string>
+    <string name="dn_notificationTitle">CRcalorífero envió un mensaje de texto</string>
+    <string name="ad_nextsend">Siguiente envio</string>
+    <string name="ad_lastsent">Últimos SMS enviados</string>
+    <string name="gt_GPSposReqBtn">Solicitar posicion de GPS</string>
+    <string name="sh_tvgpstracker">Solicitar GPS-Tracker</string>
 
 </resources>
