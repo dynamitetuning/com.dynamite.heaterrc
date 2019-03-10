@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dynamite.heaterrc"
-    android:versionCode="15"
-    android:versionName="1.5" >
+    android:versionCode="16"
+    android:versionName="1.6" >
 
-    <uses-sdk android:minSdkVersion="8" 
-        android:targetSdkVersion="26"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -17,7 +15,8 @@
         android:label="@string/app_name" 
         android:screenOrientation="portrait">
         
-        <receiver android:name=".SMSreceiver" android:enabled="true">
+        <receiver android:name=".SMSreceiver" android:enabled="true"
+            android:permission="android.permission.BROADCAST_SMS">
 		<intent-filter>
 			<action android:name="android.provider.Telephony.SMS_RECEIVED" />
 		</intent-filter>
