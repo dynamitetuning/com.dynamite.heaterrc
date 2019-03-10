@@ -104,4 +104,5 @@
         <item>Zeitplanmässiges Senden</item>
     </string-array>
     <string name="com_SMSreceived">Antwort vom Gerät mit Telefonnummer:</string>
+    <string name="cfg_configsaved">Konfiguration erfolgreich gespeichert</string>
 </resources>

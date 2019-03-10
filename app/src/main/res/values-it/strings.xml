@@ -98,5 +98,11 @@
         <item>Invio pianificato</item>
     </string-array>
     <string name="com_SMSreceived">Risposta dal dispositivo con numero di telefono:</string>
+    <string name="com_smsCounterExceed">Il contatore SMS è maggiore di</string>
+    <string name="com_PrepaidCreditTitle">Credito prepagato:</string>
+    <string name="com_prepaidRecharge">Il credito prepagato del riscaldatore è stato esaurito. Si prega di ricaricare e aggiornare il valore nella scheda di configurazione.  Imposta il valore su zero per disabilitare il messaggio.</string>
+    <string name="cfg_configsaved">Configurazione salvata correttamente</string>
+    <string name="cfg_tvPrepaidCredit">Credito prepagato del riscaldatore</string>
+    <string name="cfg_tvSMScost">Costo di un SMS per il riscaldamento</string>
 
 </resources>

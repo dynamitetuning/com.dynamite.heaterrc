@@ -61,5 +61,39 @@ Para usar el inicio programada utilizar la pestaña \'Timer\'.</string>
     <string name="ad_lastsent">Últimos SMS enviados</string>
     <string name="gt_GPSposReqBtn">Solicitar posicion de GPS</string>
     <string name="sh_tvgpstracker">Solicitar GPS-Tracker</string>
+    <string name="com_reset_btn">Contador a 0</string>
+    <string name="com_reset_txt">El contador de SMS ha sido reiniciado.</string>
+    <string name="com_Restartwarning">Reinicie la aplicación por favor</string>
+    <string name="com_SMSsending">: SMS enviados según lo programado</string>
+    <string name="com_SMSsendingErr">: El envío de SMS falló</string>
+    <string name="com_spinnerpromt">Seleccionar</string>
+    <string name="com_backbutton">Espalda</string>
+    <string name="com_smsCounterExceed">El contador de SMS es mayor que</string>
+    <string name="com_prepaidRecharge">El crédito prepago del calentador se ha agotado. Por favor, vuelva a cargar y actualice el valor en la pestaña de configuración.  Establezca el valor en cero para deshabilitar el mensaje.</string>
+    <string name="com_PrepaidCreditTitle">Crédito prepago:</string>
+    <string name="cfb_cbGPStracker">Activar la pestaña del GPS tracker</string>
+    <string name="cfg_configsaved">Configuración guardada exitosamente</string>
+    <string name="cfg_tvPosReqCmd">Comando para solicitud de posición GPS</string>
+    <string name="cfg_tvphonenumberGPS">Número de teléfono celular del GPS-Tracker</string>
+    <string name="cfg_tvMaxSMScount">Límite máximo de SMS enviados (0 = ilimitado)</string>
+    <string name="cfg_tvPrepaidCredit">" Crédito prepago del calentador."</string>
+    <string name="cfg_tvSMScost">Costo de un SMS para el calentador.</string>
+    <string name="prog_schedbutton">Envios programados</string>
+    <string name="prog_delbutton">Apagar plan</string>
+    <string name="prog_tvprogram_schedule">Elige dias</string>
+    <string name="prog_schedrepeat">Repeticiones:</string>
+    <string name="prog_showdetails">Mostrar detalles</string>
+    <string name="prog_sunday_initials">Do</string>
+    <string name="prog_monday_initials">Lu</string>
+    <string name="prog_tuesday_initials">Ma</string>
+    <string name="prog_wednesday_initials">Mi</string>
+    <string name="prog_thursday_initials">Jo</string>
+    <string name="prog_friday_initials">Vi</string>
+    <string name="prog_saturday_initials">Sa</string>
+    <string name="prog_schedule_deactivated">-Timer ha sido desactivado.</string>
+    <string name="prog_scheduleToggleON">ACTIVO</string>
+    <string name="prog_scheduleToggleOFF">OFF</string>
+    <string name="prog_helpTitle">Ayudar</string>
+    <string name="prog_helpText">Elija \'Enviar inmediatamente\' si desea enviar el mensaje completo de tiempo.  Elija \'Envío programado\' si desea enviar el mensaje de inicio para la hora y el día programados.</string>
 
 </resources>
