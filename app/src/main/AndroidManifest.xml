@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dynamite.heaterrc"
-    android:versionCode="16"
-    android:versionName="1.6" >
+    package="com.dynamite.heaterrc">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    
-    <application android:name=".myApp"
+
+    <application
+        android:name=".myApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" 
+        android:label="@string/app_name"
         android:screenOrientation="portrait">
-        
-        <receiver android:name=".SMSreceiver" android:enabled="true"
+
+        <receiver
+            android:name=".SMSreceiver"
+            android:enabled="true"
             android:permission="android.permission.BROADCAST_SMS">
-		<intent-filter>
-			<action android:name="android.provider.Telephony.SMS_RECEIVED" />
-		</intent-filter>
-		</receiver>
-        <receiver android:name=".AlarmReceiver" android:enabled="true"/>  
-        
-        <receiver android:name=".BootReceiver" android:enabled="true">
-    		<intent-filter>
-        		<action android:name="android.intent.action.BOOT_COMPLETED" />
-    		</intent-filter>
-		</receiver>
-        
-        <activity 
-            android:name=".SHtabWidget" 
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SHtabWidget"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-          	android:theme="@android:style/Theme.NoTitleBar">
-          	
-          	<intent-filter>
+            android:theme="@android:style/Theme.NoTitleBar">
+
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-          </activity>
+        </activity>
         <activity
             android:name=".StandHeizungActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,8 +58,8 @@
         </activity>
         <activity
             android:name=".ConfigActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,8 +68,8 @@
         </activity>
         <activity
             android:name=".ProgramActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,25 +78,26 @@
         </activity>
         <activity
             android:name=".GPStrackerActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayNotifications" >
+        <activity android:name=".DisplayNotifications">
             <intent-filter>
                 <action android:name="com.dynamite.heaterrc.DisplayNotifications" />
-                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlarmDetails" 
+        <activity
+            android:name=".AlarmDetails"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="com.dynamite.heaterrc.AlarmDetails" />
-                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

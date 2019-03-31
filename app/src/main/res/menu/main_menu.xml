@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/exit"
-          android:title="@string/com_exitbutton" />
-    <item android:id="@+id/info"
-          android:title="@string/com_infobutton" />
-    <item android:id="@+id/restore"
-          android:title="@string/com_restoredfltbutton" />
+    <item
+        android:id="@+id/exit"
+        android:title="@string/com_exitbutton" />
+    <item
+        android:id="@+id/info"
+        android:title="@string/com_infobutton" />
+    <item
+        android:id="@+id/restore"
+        android:title="@string/com_restoredfltbutton" />
 </menu>
