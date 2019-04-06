@@ -1,276 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/scrollView1"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvinstruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cfg_tvinstruction"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#0000ff" />
+
+        <Button
+            android:id="@+id/savebutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >           
-            <TextView
-                android:id="@+id/tvinstruction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cfg_tvinstruction"
-                android:textColor="#0000ff"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-            
-            <Button
-                android:id="@+id/savebutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/cfg_savebutton" />
-            
-            <TextView
-                android:id="@+id/tvphonenumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvphonenumber" />
-            
-            <EditText
-                android:id="@+id/phonenumber"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="phone"
-                android:hint="e.g. +123456789"
-                android:ems="10" >
+            android:layout_marginTop="12dp"
+            android:text="@string/cfg_savebutton" />
 
-                <requestFocus />
-            </EditText>
-            
-            <TextView
-                android:id="@+id/tvstartcmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvstartcmd" />
-            
-            <EditText
-                android:id="@+id/startcmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_startcmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvstopcmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvstopcmd" />
-             
-            <EditText
-                android:id="@+id/stopcmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_stopcmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvtempcmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvtempcmd" />
-             
-            <EditText
-                android:id="@+id/tempcmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_tempcmd"
-                android:ems="10" />
-                        
-            <TextView
-                android:id="@+id/tvsummercmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvsummercmd" />
-             
-            <EditText
-                android:id="@+id/summercmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_summercmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvwintercmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvwintercmd" />
-             
-            <EditText
-                android:id="@+id/wintercmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_wintercmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvstatuscmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvstatuscmd" />
-             
-            <EditText
-                android:id="@+id/statuscmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_statuscmd"
-                android:ems="10" />
+        <TextView
+            android:id="@+id/tvphonenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvphonenumber" />
 
-            <TextView
-                android:id="@+id/tvheatdurationcmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvheatdurationcmd" />
-             
-            <EditText
-                android:id="@+id/heatdurationcmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_heattimercmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvheatduration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvheatduration" />
-             
-            <EditText
-                android:id="@+id/heatduration"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="number"
-                android:hint="@string/cfg_heatduration"
-                android:ems="10" />
- 
-            <TextView
-                android:id="@+id/tvSMSfeedbackcmd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvSMSfeedbackcmd" />
-             
-            <EditText
-                android:id="@+id/SMSfeedbackcmd"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="text"
-                android:hint="@string/cfg_SMSfeedbackcmd"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvMaxSMScount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvMaxSMScount" />
-             
-            <EditText
-                android:id="@+id/maxSMScount"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="number"
-                android:hint="@string/cfg_maxSMScount"
-                android:ems="10" />
-            
-            
-            <TextView
-                android:id="@+id/tvPrepaidCredit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvPrepaidCredit" />
-             
-            <EditText
-                android:id="@+id/prepaidCredit"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="numberDecimal"
-                android:hint="@string/cfg_prepaidCredit"
-                android:ems="10" />
-            
-            <TextView
-                android:id="@+id/tvSMScost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvSMScost" />
-             
-            <EditText
-                android:id="@+id/SMScost"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-				android:textSize="12sp"
-                android:inputType="numberDecimal"
-                android:hint="@string/cfg_SMScost"
-                android:ems="10" />
-            
-            
-            <TextView
-                android:id="@+id/tvSMSfeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/cfg_tvSMSfeedback" />
-            
-            <ToggleButton
-                android:id="@+id/SMSfeedbackbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            
-            <CheckBox
-                android:id="@+id/ShowSMSwarning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cfg_cbsmssendwarning" />
-            
-            <CheckBox 
-                android:id="@+id/EnableGPStracker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cfb_cbGPStracker"/>
-            
-            <Button
-                android:id="@+id/exitbutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/com_exitbutton" />
+        <EditText
+            android:id="@+id/phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="e.g. +123456789"
+            android:inputType="phone"
+            android:textSize="12sp">
 
-            <TextView
-		        android:id="@+id/tvinfo"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:text="@string/footer" />
-		            
-        </LinearLayout>
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/tvstartcmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvstartcmd" />
+
+        <EditText
+            android:id="@+id/startcmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_startcmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvstopcmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvstopcmd" />
+
+        <EditText
+            android:id="@+id/stopcmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_stopcmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvtempcmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvtempcmd" />
+
+        <EditText
+            android:id="@+id/tempcmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_tempcmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvsummercmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvsummercmd" />
+
+        <EditText
+            android:id="@+id/summercmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_summercmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvwintercmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvwintercmd" />
+
+        <EditText
+            android:id="@+id/wintercmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_wintercmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvstatuscmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvstatuscmd" />
+
+        <EditText
+            android:id="@+id/statuscmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_statuscmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvheatdurationcmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvheatdurationcmd" />
+
+        <EditText
+            android:id="@+id/heatdurationcmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_heattimercmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvheatduration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvheatduration" />
+
+        <EditText
+            android:id="@+id/heatduration"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_heatduration"
+            android:inputType="number"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvSMSfeedbackcmd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvSMSfeedbackcmd" />
+
+        <EditText
+            android:id="@+id/SMSfeedbackcmd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_SMSfeedbackcmd"
+            android:inputType="text"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvMaxSMScount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvMaxSMScount" />
+
+        <EditText
+            android:id="@+id/maxSMScount"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_maxSMScount"
+            android:inputType="number"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tvPrepaidCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvPrepaidCredit" />
+
+        <EditText
+            android:id="@+id/prepaidCredit"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_prepaidCredit"
+            android:inputType="numberDecimal"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvSMScost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvSMScost" />
+
+        <EditText
+            android:id="@+id/SMScost"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/cfg_SMScost"
+            android:inputType="numberDecimal"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/tvSMSfeedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cfg_tvSMSfeedback" />
+
+        <ToggleButton
+            android:id="@+id/SMSfeedbackbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/ShowSMSwarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cfg_cbsmssendwarning" />
+
+        <CheckBox
+            android:id="@+id/EnableGPStracker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cfb_cbGPStracker" />
+
+        <Button
+            android:id="@+id/exitbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/com_exitbutton" />
+
+        <TextView
+            android:id="@+id/tvinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/footer" />
+
+    </LinearLayout>
 </ScrollView>

@@ -15,7 +15,7 @@
     <string name="helptextGPS">Use this tab to send a message with the configured text to the configured phone number.\n
         A possible application can be the GPS-Tracker which is using text messages for transmitting the GPS location.</string>
     <string name="helpLink" translatable="false">https://github.com/dynamitetuning/com.dynamite.heaterrc/wiki/Help_EN</string>
-        
+
     <string name="com_exitbutton">Exit</string>
     <string name="com_infobutton">Info</string>
     <string name="com_restoredfltbutton">Restore defaults</string>
@@ -42,7 +42,7 @@
     <string name="com_smsCounterExceed">The SMS counter is greater than </string>
     <string name="com_PrepaidCreditTitle">Prepaid Credit:\t</string>
     <string name="com_prepaidRecharge">The prepaid credit of your remote device is used up. Please recharge and update the value in the config tab.\n Set the values to zero to disable this notification.</string>
-    
+
     <string name="cfg_tvphonenumber">Phone number of remote device</string>
     <string name="cfg_phonenumber" translatable="false">0</string>
     <string name="cfg_tvstartcmd">Command for start</string>
@@ -79,7 +79,7 @@
     <string name="cfg_prepaidCredit" translatable="false">0.0</string>
     <string name="cfg_tvSMScost">Price of an SMS for the remote device</string>
     <string name="cfg_SMScost" translatable="false">0.0</string>
-    
+
     <string name="prog_tvprogram">Select the start time</string>
     <string name="prog_setbutton">Send Start Time</string>
     <string name="prog_schedbutton">Scheduled Sending</string>
@@ -100,7 +100,7 @@
     <string name="prog_helpTitle">Help</string>
     <string name="prog_helpText">Choose \"Send immediately\" if you would like to send an SMS containing the start time to the remote device as soon as you press the \"Send Start Time\" button.\n
         Choose \"Scheduled Sending\" in case you would like to send the start SMS at a scheduled day and time.</string>
-    
+
     <string name="sh_tvhome">Choose a command</string>
     <string name="sh_startbutton">Start\nHeater</string>
     <string name="sh_stopbutton">Stop\nHeater</string>
@@ -110,7 +110,7 @@
     <string name="sh_statusbutton">Status\nRequest</string>
     <string name="sh_helpbutton">Help</string>
     <string name="sh_tvgpstracker">GPS-Tracker Request</string>
-    
+
     <string name="gt_GPSposReqBtn">Request GPS position</string>
 
     <string name="sp_MyPrefsFile" translatable="false">MyPrefsFile</string>
@@ -153,13 +153,13 @@
     <string name="sp_schedule_active" translatable="false">schedule_active</string>
     <string name="sp_prepaidCredit" translatable="false">prepaidCredit</string>
     <string name="sp_SMScost" translatable="false">SMScost</string>
-    
+
     <string name="ad_lastsent">Last sent SMS</string>
     <string name="ad_nextsend">Next SMS to send</string>
-    
+
     <string name="dn_notificationTitle">HeaterRC has sent an SMS</string>
     <string name="dn_notificationText">Tap here to see the details. The SMS has been sent as scheduled.</string>
-    
+
     <string-array name="selection_array">
         <item>Send SMS immediately</item>
         <item>Scheduled sending</item>

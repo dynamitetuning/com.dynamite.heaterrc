@@ -9,9 +9,9 @@
     <string name="helptext">Bevor Sie diese Applikation benutzen können, müssen Sie eine gültige Telefonnummer im Konfig-Tab eingeben.\n
 	Bei betätigen der Befehlstasten, wird eine SMS mit dem vorkonfigurierten Text an die gespeicherte Telefonnummer gesendet.\n
 	Benutzen Sie den Timer Tab für einen programmierten Start.</string>
-	<string name="helptextGPS">Benutzen Sie diesen Tab um eine SMS mit dem vorkonfigurierten Text an die gespeicherte Telefonnummer zu senden.\n
+    <string name="helptextGPS">Benutzen Sie diesen Tab um eine SMS mit dem vorkonfigurierten Text an die gespeicherte Telefonnummer zu senden.\n
 	    Eine mögliche Anwendung könnte der GPS-Tracker sein, welches SMS für die Übermittlung der aktuellen GPS Position verwendet.</string>
-        
+
     <string name="com_exitbutton">Beenden</string>
     <string name="com_infobutton">Info</string>
     <string name="com_restoredfltbutton">Werkseinstellungen</string>
@@ -25,8 +25,8 @@
     <string name="com_cnfgErrTxt">Bitte geben Sie eine gültige Telefonnummer im Konfig-Tab ein</string>
     <string name="com_versionPre">Version:\t\t</string>
     <string name="com_smsCounter">SMS Zähler:\t</string>
-	<string name="com_SMSsendwarning">Es wird eine SMS an das Heizgerät geschickt</string>
-	<string name="com_reset_btn">Zähler auf 0</string>
+    <string name="com_SMSsendwarning">Es wird eine SMS an das Heizgerät geschickt</string>
+    <string name="com_reset_btn">Zähler auf 0</string>
     <string name="com_reset_txt">SMS Zähler wurde zurückgesetzt</string>
     <string name="com_Restartwarning">Bitte Applikation neustarten!</string>
     <string name="com_SMSsending">: SMS wurde planmässig gesendet</string>
@@ -36,8 +36,8 @@
     <string name="com_smsCounterExceed">Der SMS Zähler ist größer als </string>
     <string name="com_PrepaidCreditTitle">Prepaid Guthaben:\t</string>
     <string name="com_prepaidRecharge">Das Prepaid-Guthaben des Heizgerätes ist aufgebraucht. Bitte aufladen und Wert im Konfig-Tab aktualisieren.\n Wert auf null setzen um Meldung zu deaktivieren.</string>
-    
-    
+
+
     <string name="cfg_tvphonenumber">Telefonnummer des Heizgerät</string>
     <string name="cfg_tvstartcmd">Befehlstext für Start</string>
     <string name="cfg_tvstopcmd">Befehlstext für Stop</string>
@@ -59,7 +59,7 @@
     <string name="cfg_tvMaxSMScount">Maximale Anzahl SMS (0=unbegrenzt)</string>
     <string name="cfg_tvPrepaidCredit">Prepaid Guthaben des Heizgerätes</string>
     <string name="cfg_tvSMScost">Kosten einer SMS für das Heizgerät</string>
-    
+
     <string name="prog_tvprogram">Wählen Sie die Startzeit</string>
     <string name="prog_setbutton">Sende Startzeit</string>
     <string name="prog_schedbutton">Zeitplanmässiges Senden</string>
@@ -80,7 +80,7 @@
     <string name="prog_helpTitle">Hilfe</string>
     <string name="prog_helpText">Wählen sie \"Sofort senden\" wenn sie eine SMS inklusive der Startzeit senden möchten sobald sie die \"Sende Startzeit\" Taste drücken.\n
         Wählen sie \"Zeitplanmässiges Senden\" falls sie eine Start-SMS zur geplanten Zeit am geplanten Tag senden möchten.</string>
-    
+
     <string name="sh_tvhome">Wählen Sie ein Befehl</string>
     <string name="sh_startbutton">Starte\nBetrieb</string>
     <string name="sh_stopbutton">Stoppe\nBetrieb</string>
@@ -90,12 +90,12 @@
     <string name="sh_statusbutton">Status\nanfrage</string>
     <string name="sh_helpbutton">Hilfe</string>
     <string name="sh_tvgpstracker">GPS-Tracker Anfrage</string>
-    
+
     <string name="gt_GPSposReqBtn">GPS Positionsanfrage </string>
-    
+
     <string name="ad_lastsent">Zuletzt gesendete SMS</string>
     <string name="ad_nextsend">Nächste Sendung</string>
-    
+
     <string name="dn_notificationTitle">StandHeizungFB hat eine SMS geschickt</string>
     <string name="dn_notificationText">Für Details hier drücken.</string>
 

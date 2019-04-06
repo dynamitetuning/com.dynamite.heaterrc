@@ -9,9 +9,9 @@
     <string name="helptext">Per poter utilizzare questa applicazione, è necessario inserire un numero cellulare valido nel tab \'Config\'.\n
 	Premendo i pulsanti di comando nel tab \'Home\', verrà inviato un SMS con il testo preconfigurato al numero salvato.\n
 	Per un avvio programmato usate il tab \'Timer\'.</string>
-	<string name="helptextGPS">Usate questo tab per inviare un SMS con il testo preconfigurato al numero salvato.\n
+    <string name="helptextGPS">Usate questo tab per inviare un SMS con il testo preconfigurato al numero salvato.\n
 	    Un possibile utilizzo è per la trasmissione della posizione attuale GPS tramite GPS-Tracker.</string>
-        
+
     <string name="com_exitbutton">Esci</string>
     <string name="com_infobutton">Info</string>
     <string name="com_restoredfltbutton">Ripristino</string>
@@ -33,7 +33,7 @@
     <string name="com_SMSsendingErr">: invio SMS non riuscito</string>
     <string name="com_spinnerpromt">Scegliete</string>
     <string name="com_backbutton">Indietro</string>
-    
+
     <string name="cfg_tvphonenumber">Numero cellulare dell\'apparecchio remoto</string>
     <string name="cfg_tvstartcmd">Comando per l\'avvio</string>
     <string name="cfg_tvstopcmd">Comando per lo stop</string>
@@ -53,7 +53,7 @@
     <string name="cfg_tvPosReqCmd">Comando per richiesta posizione GPS</string>
     <string name="cfg_tvphonenumberGPS">Numero cellulare del GPS-Tracker</string>
     <string name="cfg_tvMaxSMScount">Limite massimo SMS inviati (0=illimitato)</string>
-    
+
     <string name="prog_tvprogram">Selezionare l\'orario d\'avvio</string>
     <string name="prog_setbutton">Invia l\'orario d\'avvio</string>
     <string name="prog_schedbutton">Invio pianificato</string>
@@ -74,7 +74,7 @@
     <string name="prog_helpTitle">Aiuto</string>
     <string name="prog_helpText">Scegliere \'Invio immediato\' se si desidera inviare il messaggio completo d\'orario.\n
         Scegliere \'Invio pianificato\' se si desidera inviare il messaggio d\'avvio per l\'ora e il giorno pianificato.</string>
-    
+
     <string name="sh_tvhome">Scegli un comando</string>
     <string name="sh_startbutton">Avvia\n</string>
     <string name="sh_stopbutton">Stop\n</string>
@@ -84,12 +84,12 @@
     <string name="sh_statusbutton">Richiedi\nstato</string>
     <string name="sh_helpbutton">Istruzioni</string>
     <string name="sh_tvgpstracker">Richiesta GPS-Tracker</string>
-    
+
     <string name="gt_GPSposReqBtn">Richiesta posizione GPS</string>
-    
+
     <string name="ad_lastsent">Ultimo SMS inviato</string>
     <string name="ad_nextsend">Prossimo invio</string>
-    
+
     <string name="dn_notificationTitle">TCRiscaldamento ha inviato un SMS</string>
     <string name="dn_notificationText">Premere qui per detagli.</string>
 
@@ -100,7 +100,7 @@
     <string name="com_SMSreceived">Risposta dal dispositivo con numero di telefono:</string>
     <string name="com_smsCounterExceed">Il contatore SMS è maggiore di</string>
     <string name="com_PrepaidCreditTitle">Credito prepagato:</string>
-    <string name="com_prepaidRecharge">Il credito prepagato del riscaldatore è stato esaurito. Si prega di ricaricare e aggiornare il valore nella scheda di configurazione.  Imposta il valore su zero per disabilitare il messaggio.</string>
+    <string name="com_prepaidRecharge">Il credito prepagato del riscaldatore è stato esaurito. Si prega di ricaricare e aggiornare il valore nella scheda di configurazione.  Imposta il valore su zero per disabilitare il messaggio.</string>
     <string name="cfg_configsaved">Configurazione salvata correttamente</string>
     <string name="cfg_tvPrepaidCredit">Credito prepagato del riscaldatore</string>
     <string name="cfg_tvSMScost">Costo di un SMS per il riscaldamento</string>

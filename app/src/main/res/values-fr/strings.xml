@@ -9,9 +9,9 @@
     <string name="helptext">Avant que vous pouvez utiliser cet application, vous devriez saisir le numéro de téléphone mobile du chauffage dans l\'onglet \'config\'.\n
 	Quand vous actionnez la touche de commande, un SMS sera envoyé à le numéro de téléphone du chauffage avec le texte pré-configuré.\n
 	Utilisez l\'onglet \'Timer\' pour un lancement programmé.</string>
-	<string name="helptextGPS">Utilisez cet onglet pour envoyé un SMS avec le texte pré-configuré à le numéro de téléphone sauvé.\n
+    <string name="helptextGPS">Utilisez cet onglet pour envoyé un SMS avec le texte pré-configuré à le numéro de téléphone sauvé.\n
 	Une utilisation possible est la transmission de la position GPS actuelle en untilisant le GPS-Tracker.</string>
-        
+
     <string name="com_exitbutton">Quittez</string>
     <string name="com_infobutton">Info</string>
     <string name="com_restoredfltbutton">Paramètres d\'origine</string>
@@ -25,18 +25,18 @@
     <string name="com_cnfgErrTxt">S.v.p. saisiez un numéro de téléphone mobile valide dans l\'onglet \'config\'</string>
     <string name="com_versionPre">Version:\t\t</string>
     <string name="com_smsCounter">Compteur de SMS:\t</string>
-	<string name="com_SMSsendwarning">Un SMS sera envoyé à votre chauffage autonome</string>
-	<string name="com_reset_btn">Compteur a 0</string>
+    <string name="com_SMSsendwarning">Un SMS sera envoyé à votre chauffage autonome</string>
+    <string name="com_reset_btn">Compteur a 0</string>
     <string name="com_reset_txt">Le compteur a été réinitialisé</string>
     <string name="com_Restartwarning">Redémarrer l\'application, s.v.p.</string>
     <string name="com_SMSsending">: SMS envoyé comme prévu</string>
     <string name="com_SMSsendingErr">: l\'envoi a échoué</string>
     <string name="com_spinnerpromt">Choisir</string>
-    <string name="com_backbutton">Arrière</string>    
+    <string name="com_backbutton">Arrière</string>
     <string name="com_smsCounterExceed">Le compteur SMS est supérieur à </string>
     <string name="com_PrepaidCreditTitle">Crédit prépayé:\t</string>
     <string name="com_prepaidRecharge">Le crédit prépayé de votre chauffage autonome est appauvri. S\'il vous plaît recharger et rafraîchir valeur dans l\'onglet \'Config\'. Définir la valeur à zéro pour désactiver le message.</string>
-    
+
     <string name="cfg_tvphonenumber">Numéro de téléphone du chauffage autonome</string>
     <string name="cfg_tvstartcmd">Texte de commande pour le démarrage</string>
     <string name="cfg_tvstopcmd">Texte de commande pour l\'arrête</string>
@@ -44,7 +44,7 @@
     <string name="cfg_tvsummercmd">Texte de commande pour service estival</string>
     <string name="cfg_tvwintercmd">Texte de commande pour service hivernal</string>
     <string name="cfg_tvstatuscmd">Texte de commande pour demande d\'état</string>
-    <string name="cfg_tvheatduration">Durée de chauffage en minutes</string>   
+    <string name="cfg_tvheatduration">Durée de chauffage en minutes</string>
     <string name="cfg_tvheatdurationcmd">Texte de commande pour durée de chauffage</string>
     <string name="cfg_tvSMSfeedbackcmd">Texte de commande pour feed-back par SMS</string>
     <string name="cfg_tvSMSfeedback">Feed-back par SMS</string>
@@ -56,10 +56,10 @@
     <string name="cfg_configsaved">Configuration saved successfully</string>
     <string name="cfg_tvPosReqCmd">Command for GPS position request</string>
     <string name="cfg_tvphonenumberGPS">Phone number of GPS-Tracker</string>
-    <string name="cfg_tvMaxSMScount">Limite de SMS envoyés (0=illimité)</string>   
+    <string name="cfg_tvMaxSMScount">Limite de SMS envoyés (0=illimité)</string>
     <string name="cfg_tvPrepaidCredit">Crédit prépayé de votre chauffage autonome</string>
     <string name="cfg_tvSMScost">Coût d\'un SMS pour le chauffage</string>
-    
+
     <string name="prog_tvprogram">Choisissez l\'horaire de démarrage</string>
     <string name="prog_setbutton">Envoie l\'horaire de démarrage</string>
     <string name="prog_schedbutton">Envoi programmée</string>
@@ -80,7 +80,7 @@
     <string name="prog_helpTitle">Aide</string>
     <string name="prog_helpText">Choisissez \'Envoi immédiat\' si vouz desirez envoyer le SMS contenant l\'horaire aprez cliquez le bouton.\n
         Choisissez \'Envoi prévu\' si vouz desirez envoyer le SMS de démarrage à le temps e le jour établi.</string>
-    
+
     <string name="sh_tvhome">Choisissez une commande</string>
     <string name="sh_startbutton">Démarrer\nservice</string>
     <string name="sh_stopbutton">Arrête\nservice</string>
@@ -90,12 +90,12 @@
     <string name="sh_statusbutton">Demande\nétat</string>
     <string name="sh_helpbutton">Instruction</string>
     <string name="sh_tvgpstracker">Demande GPS-Tracker</string>
-    
+
     <string name="gt_GPSposReqBtn">Demande position GPS</string>
-    
+
     <string name="ad_lastsent">dernier SMS envoyé</string>
     <string name="ad_nextsend">Envoi suivant</string>
-    
+
     <string name="dn_notificationTitle">TCChauffage envoyez un SMS</string>
     <string name="dn_notificationText">Touche ici pour plus de détails.</string>
 

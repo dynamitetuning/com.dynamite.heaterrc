@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-	
+
     <TextView
         android:id="@+id/tvprogram"
         android:layout_width="wrap_content"
@@ -10,170 +10,171 @@
         android:layout_alignParentLeft="true"
         android:text="@string/prog_tvprogram"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-	<Spinner
+
+    <Spinner
         android:id="@+id/spinner1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/tvprogram"
+        android:layout_centerHorizontal="true"
         android:prompt="@string/com_spinnerpromt" />
-	
-	<Button
+
+    <Button
         android:id="@+id/btnhelpsched"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinner1"
         android:layout_alignParentRight="true"
         android:background="@drawable/ic_help" />
-    
-    <ViewFlipper android:id="@+id/ViewFlipper01"
+
+    <ViewFlipper
+        android:id="@+id/ViewFlipper01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinner1">
         <!--adding views to ViewFlipper-->
-	
-		<RelativeLayout
-	         android:layout_width="fill_parent"
-	         android:layout_height="wrap_content" 
-	         android:orientation="vertical" >
-			
-		   	<TimePicker
-		        android:id="@+id/settime"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerHorizontal="true" />
-		    
-			<Button
-			     android:id="@+id/setbutton"
-			     android:layout_width="fill_parent"
-			     android:layout_height="wrap_content"
-			     android:layout_below="@id/settime"
-			     android:text="@string/prog_setbutton" 		     
-			     android:layout_marginTop="24dp" />
-		</RelativeLayout>
-	
-    	<LinearLayout
-	         android:layout_width="fill_parent"
-	         android:layout_height="wrap_content"
-	         android:orientation="vertical" >
-			<RelativeLayout
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:orientation="horizontal" >
-				<!--suppress AndroidMissingOnClickHandler -->
-				<ToggleButton
-				    android:id="@+id/scheduletoggle"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_centerHorizontal="true"
-				    android:layout_marginTop="16dp"
-				    android:textOn="@string/prog_scheduleToggleON"
-				    android:textOff="@string/prog_scheduleToggleOFF"
-				    android:onClick="setOnClickListener"/>
-			</RelativeLayout>
-	
-			<TextView
-		      	 android:id="@+id/tvrepeat"
-		      	 android:layout_width="wrap_content"
-		      	 android:layout_height="wrap_content"
-		      	 android:layout_marginTop="16dp"
-		      	 android:text="@string/prog_schedrepeat" />
-	
-			<LinearLayout
-	            android:id="@+id/linlay1"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	             >	    
-				    <Button
-			        android:id="@+id/btnsunday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:textSize="12sp"
-			        android:text="@string/prog_sunday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btnmonday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_monday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btntuesday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_tuesday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btnwednesday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_wednesday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btnthursday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_thursday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btnfriday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_friday_initials" />
-				    
-				    <Button
-			        android:id="@+id/btnsaturday"
-			        android:layout_width="0dp"
-			        android:layout_height="wrap_content"
-			        android:layout_weight="1"
-			        android:layout_marginLeft="1dp"
-			        android:textSize="12sp"
-			        android:text="@string/prog_saturday_initials" />
-				</LinearLayout>
-				
-				<Button 
-				    android:id="@+id/btnshowdetail"
-				    android:layout_width="fill_parent"
-				    android:layout_height="0dip"
-				    android:layout_weight="1"
-				    android:text="@string/prog_showdetails"
-				    android:layout_marginTop="24dp"/>
-			</LinearLayout>
 
-		</ViewFlipper>
-    
-	<TextView
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TimePicker
+                android:id="@+id/settime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                android:id="@+id/setbutton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/settime"
+                android:layout_marginTop="24dp"
+                android:text="@string/prog_setbutton" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--suppress AndroidMissingOnClickHandler -->
+                <ToggleButton
+                    android:id="@+id/scheduletoggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:onClick="setOnClickListener"
+                    android:textOff="@string/prog_scheduleToggleOFF"
+                    android:textOn="@string/prog_scheduleToggleON" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvrepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/prog_schedrepeat" />
+
+            <LinearLayout
+                android:id="@+id/linlay1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnsunday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/prog_sunday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnmonday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_monday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btntuesday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_tuesday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnwednesday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_wednesday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnthursday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_thursday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnfriday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_friday_initials"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnsaturday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/prog_saturday_initials"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnshowdetail"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_marginTop="24dp"
+                android:layout_weight="1"
+                android:text="@string/prog_showdetails" />
+        </LinearLayout>
+
+    </ViewFlipper>
+
+    <TextView
         android:id="@+id/tvinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:text="@string/footer" />
-	
+
     <Button
-	     android:id="@+id/exitbutton"
-	     android:layout_width="fill_parent"
-	     android:layout_height="wrap_content"
-		 android:layout_above="@id/tvinfo"
-	     android:text="@string/com_exitbutton"
-	     />
+        android:id="@+id/exitbutton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tvinfo"
+        android:text="@string/com_exitbutton" />
 
     <ProgressBar
         android:id="@+id/programPB"
