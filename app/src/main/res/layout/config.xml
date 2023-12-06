@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="@string/cfg_tvinstruction"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#0000ff" />
+            android:textColor="#0078FF" />
 
         <Button
             android:id="@+id/savebutton"
