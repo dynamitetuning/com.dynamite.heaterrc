@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 8
-    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "com.dynamite.heaterrc"
@@ -25,10 +24,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
+    namespace 'com.dynamite.heaterrc'
+    lint {
         disable 'GoogleAppIndexingWarning'
-        //checkReleaseBuilds false
-        //abortOnError false
-        // or if you would like to see all the build errors/warning, change the variable above to true
     }
 }
