@@ -1,5 +1,4 @@
-# HeaterRC
-An easy-to-use android app for controlling your auxiliary heating system from remote.
-The app itself as well as additional information about it is available here: https://play.google.com/store/apps/details?id=com.dynamite.heaterrc
+# HeaterRC is End of Life
+It was an easy-to-use android app for controlling your auxiliary heating system from remote, that unfortunately is no longer maintained nor supported.
 
 See LICENSE for licensing issues.
