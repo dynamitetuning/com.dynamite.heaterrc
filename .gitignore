@@ -11,6 +11,7 @@
 # Generated files
 bin/
 gen/
+/app/release/app-release.aab
 
 # Gradle files
 .gradle/
@@ -36,3 +37,4 @@ proguard/
 
 # Crashlytics configuations
 com_crashlytics_export_strings.xml
+
