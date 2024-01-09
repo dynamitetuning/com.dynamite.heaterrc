@@ -1,5 +1,5 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 ProgramActivity.java
 
 Copyright (C) 2015  dynamitetuning
@@ -18,16 +18,13 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-import java.util.Calendar;
 
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -44,13 +41,15 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
+import java.util.Calendar;
+
 public class ProgramActivity extends commonActivity {
 	// private static final String DEBUG_TAG = "ProgramActivity";
     private int pHour;
     private int pMinute;
     /** This integer will uniquely define the dialog to be used for displaying time picker.*/
     static final int TIME_DIALOG_ID = 0;
-	
+
 	/** Called when the activity is first created. */
 	public static final String PREFS_NAME = "MyPrefsFile";
 	//public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
@@ -58,7 +57,7 @@ public class ProgramActivity extends commonActivity {
     //public int SMS_RESULT_COUNTER=0;
 	SharedPreferences.OnSharedPreferenceChangeListener listener;
 	private final int IPC_ID = 1122;
-    
+
 	Button exitBtn;
 	Button setBtn;
 	Button helpschedBtn;
@@ -77,9 +76,9 @@ public class ProgramActivity extends commonActivity {
     Button showDetails;
     TextView tvprogram;
     ToggleButton scheduleToggle;
-	
-    
-        
+
+
+
     @Override
     public void onResume(Bundle savedInstaceState){
     	// Log.d(DEBUG_TAG, "onResume has been called");
@@ -89,36 +88,36 @@ public class ProgramActivity extends commonActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.program);
-        
+
         // Log.d(DEBUG_TAG, "onCreate has been called");
-        
+
      // Restore preferences
         final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
-        
+
         // Button initialization
         exitBtn = (Button)findViewById(R.id.exitbutton);
         setBtn = (Button)findViewById(R.id.setbutton);
         helpschedBtn = (Button)findViewById(R.id.btnhelpsched);
         setBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        
+
         // initialize TextView
         tvprogram = (TextView)findViewById(R.id.tvprogram);
-        
+
         // initialize ProgressBar
         sendingPB = (ProgressBar)findViewById(R.id.programPB);
         sendingPB.setVisibility(View.INVISIBLE);
-        
+
         // initialize ToggleButton
         scheduleToggle = (ToggleButton)findViewById(R.id.scheduletoggle);
         scheduleToggle.setChecked(settings.getBoolean(getString(R.string.sp_schedule_active), false));
-        
+
         // initialize timepicker
         setTime = (TimePicker)findViewById(R.id.settime);
         setTime.setIs24HourView(true);
         setTime.setCurrentHour(settings.getInt(getString(R.string.sp_TimePickerHour), 12));
         setTime.setCurrentMinute(settings.getInt(getString(R.string.sp_TimePickerMin), 30));
-        
+
         // initialize Spinner
         final Spinner spinner = (Spinner)findViewById(R.id.spinner1);
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
@@ -126,10 +125,10 @@ public class ProgramActivity extends commonActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(settings.getInt(getString(R.string.sp_progSpinnerPos), 0));
-        
-        // initialize ViewFlipper 
+
+        // initialize ViewFlipper
         VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
-        
+
         // initialize Weekdays buttons
         sunday = (Button)findViewById(R.id.btnsunday);
         monday = (Button)findViewById(R.id.btnmonday);
@@ -138,9 +137,9 @@ public class ProgramActivity extends commonActivity {
         thursday = (Button)findViewById(R.id.btnthursday);
         friday = (Button)findViewById(R.id.btnfriday);
         saturday = (Button)findViewById(R.id.btnsaturday);
-        
+
         showDetails = (Button)findViewById(R.id.btnshowdetail);
-        
+
         sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
         monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
         tuesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_tuesday), false)));
@@ -148,37 +147,37 @@ public class ProgramActivity extends commonActivity {
         thursday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_thursday), false)));
         friday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_friday), false)));
         saturday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_saturday), false)));
-        
-        
+
+
         /* Get the current time */
         final Calendar cal = Calendar.getInstance();
         pHour = cal.get(Calendar.HOUR_OF_DAY);
         pMinute = cal.get(Calendar.MINUTE);
         //pHour = settings.getInt(getString(R.string.sp_TimePickerHour), 12);
         //pMinute = settings.getInt(getString(R.string.sp_TimePickerMin), 30);
-        
-        
-     // set click listener on the exitBtn 
+
+
+     // set click listener on the exitBtn
         exitBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Log.d(DEBUG_TAG, "Exit Button pressed");
             	System.exit(0);
             }
             });
-        
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         	public void onItemSelected(AdapterView<?> parent,
     	        View view, int pos, long id) {
-				// select the view based on spinner position  
+				// select the view based on spinner position
     	    	VF.setDisplayedChild(pos);
-				
-		        if (pos>0){		        
+
+		        if (pos>0){
 		           // Obtain MotionEvent object
 		        	tvprogram.setText(getString(R.string.prog_tvprogram_schedule));
 		        } else {
 		        	tvprogram.setText(getString(R.string.prog_tvprogram));
 		        }
-		        
+
 		        SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).commit();
     	    }
 
@@ -189,21 +188,21 @@ public class ProgramActivity extends commonActivity {
     	    	spinner.setSelection(0);
     	    }
 		});
-        
-        helpschedBtn.setOnClickListener(new View.OnClickListener() {			
+
+        helpschedBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showMsgPopUp(getString(R.string.prog_helpTitle), getString(R.string.prog_helpText)); 
+				showMsgPopUp(getString(R.string.prog_helpTitle), getString(R.string.prog_helpText));
 			}
 		});
-        
-        // set click listener on the setBtn 
+
+        // set click listener on the setBtn
         setBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	// Log.d(DEBUG_TAG, "Set Button pressed");
             	sendingPB.setVisibility(View.VISIBLE);
             	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
-                
+
             	// Read Time
                 String hour;
                 String minute;
@@ -214,107 +213,109 @@ public class ProgramActivity extends commonActivity {
                 	hour = "0" + hour;
                 if(minute.length() < 2)
                 	minute = "0" + minute;
-                
+
                 // Log.d(DEBUG_TAG,"Time set=" + hour + minute);
                 String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));
-                
+
                 // send SMS with Start command followed by time
-                sendSMS(SMS_START_COMMAND+hour+minute);  
-                
+                sendSMS(SMS_START_COMMAND+hour+minute);
+
                 // Store hour and time to settings
                 if (setTime.getCurrentHour()!=settings.getInt(getString(R.string.sp_TimePickerHour), 12))
                 	SPeditor.putInt(getString(R.string.sp_TimePickerHour), setTime.getCurrentHour());
                 if (setTime.getCurrentMinute()!=settings.getInt(getString(R.string.sp_TimePickerMin), 30))
                 	SPeditor.putInt(getString(R.string.sp_TimePickerMin), setTime.getCurrentMinute());
                 // Commit the edits!
-                SPeditor.commit(); 
+                SPeditor.commit();
             }
             });
-        
-        scheduleToggle.setOnClickListener(new View.OnClickListener() {		
+
+        scheduleToggle.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				boolean on = scheduleToggle.isChecked();		        
+				boolean on = scheduleToggle.isChecked();
 		        if (on) {
 		            SPeditor.putBoolean(getString(R.string.sp_schedule_active), true).commit();
 		        } else {
 		        	SPeditor.putBoolean(getString(R.string.sp_schedule_active), false).commit();
-		        }				
+		        }
 			}
 		});
 
         sunday.setOnTouchListener(new OnTouchListener() {
         	public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+				if(event.getAction()==MotionEvent.ACTION_DOWN) {
+                    return true;
+                }
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-		        
+
 		        dayPressed(getString(R.string.sp_sunday));
 				return false;
 			}
         });
-        
+
         monday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-				
+
 		        dayPressed(getString(R.string.sp_monday));
 		        return false;
 			}
 		});
-        
+
         tuesday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-		        
+
 		        dayPressed(getString(R.string.sp_tuesday));
 				return false;
 			}
 		});
-        
+
         wednesday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-				
+
 		        dayPressed(getString(R.string.sp_wednesday));
 				return false;
 			}
 		});
-        
+
         thursday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-				
+
 		        dayPressed(getString(R.string.sp_thursday));
 				return false;
 			}
 		});
-        
+
         friday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-				
+
 		        dayPressed(getString(R.string.sp_friday));
 				return false;
 			}
 		});
-        
+
         saturday.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
 		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-				
+
 		        dayPressed(getString(R.string.sp_saturday));
 				return false;
 			}
 		});
-        
+
         showDetails.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				try {
@@ -328,15 +329,15 @@ public class ProgramActivity extends commonActivity {
 					myData.putIntArray("myIntArray1", myLittleArray);
 
 					myIntentA1A2.putExtras(myData);
-					
+
 					startActivityForResult(myIntentA1A2,IPC_ID);
 				} catch (Exception e) {
 					e.printStackTrace();
 					// Log.d(DEBUG_TAG, "showDetails: "+e.getMessage());
-				}				
+				}
 			}
 		});
-        
+        /*
      // Register broadcast receivers for SMS sent and delivered intents
         registerReceiver(new BroadcastReceiver() {
             @Override
@@ -346,8 +347,8 @@ public class ProgramActivity extends commonActivity {
 		        }
             }
         }, new IntentFilter(ACTION_SMS_SENT));
-      
-        
+      */
+
      // Use instance field for listener
      // It will not be gc'd as long as this instance is kept referenced
      listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
@@ -368,7 +369,7 @@ public class ProgramActivity extends commonActivity {
 		        	sendSMS(SMS_START_COMMAND);
 		        	SPeditor.putBoolean(getString(R.string.sp_scheduledSend), false).commit();
 	        	}
-	        	
+
 	        }
 	        else if (key.compareTo(getString(R.string.sp_schedule_active))==0){
 				myApp appStates = ((myApp)getApplicationContext());
@@ -395,7 +396,7 @@ public class ProgramActivity extends commonActivity {
      };
      settings.registerOnSharedPreferenceChangeListener(listener);
     }
-    
+
     private void delAlarm(Context context){
     	// Log.d(DEBUG_TAG, "delAlarm called");
     	Intent downloader = new Intent(context, AlarmReceiver.class);
@@ -410,7 +411,7 @@ public class ProgramActivity extends commonActivity {
 			// Log.d(DEBUG_TAG, "Alarm could not be cancelled!");
 		}
     }
-    
+
     private void updateWeekBtn(String weekday, boolean btnset){
     	if (weekday.compareTo(getString(R.string.sp_sunday))==0)
     		sunday.setBackgroundColor(btnColor(btnset));
@@ -430,7 +431,7 @@ public class ProgramActivity extends commonActivity {
     		// Log.d(DEBUG_TAG, "updateWeekBtn: No weekday found!");
     	}
     }
-    
+
     private void updateWeekBtn(){
     	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
@@ -441,14 +442,14 @@ public class ProgramActivity extends commonActivity {
     	friday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_friday), false)));
    		saturday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_saturday), false)));
     }
-    
+
     private int btnColor(boolean btnset){
     	if (btnset)
     		return 0xFF00FF00; // return green
     	else
     		return 0xFFFF0000; // return red
     }
-    
+
     private boolean dayPressed(String weekday){
     	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
@@ -470,10 +471,10 @@ public class ProgramActivity extends commonActivity {
 			else
 				showDialog(TIME_DIALOG_ID);
 			return true;
-		}	
-        
+		}
+
     }
-   
+
     /** Callback received when the user "picks" a time in the dialog */
     private TimePickerDialog.OnTimeSetListener mTimeSetListener =
         new TimePickerDialog.OnTimeSetListener() {
@@ -483,7 +484,7 @@ public class ProgramActivity extends commonActivity {
                 displayToast();
             }
         };
-         
+
     /** Displays a notification when the time is updated */
     private void displayToast() {
     	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -504,9 +505,9 @@ public class ProgramActivity extends commonActivity {
         	// Log.d(DEBUG_TAG, "displayToast: Could not find lastTouched");
         }
     }
-    
+
     /** Create a new dialog for time picker */
-    
+
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
@@ -523,7 +524,7 @@ public class ProgramActivity extends commonActivity {
         }
         return null;
     }
-    
+
     private int StringWeekDay2int (String weekDay){
     	int cWeekDay;
     		if (weekDay.compareTo(getString(R.string.sp_sunday))==0)

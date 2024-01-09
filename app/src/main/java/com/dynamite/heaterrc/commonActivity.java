@@ -1,5 +1,5 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 commonActivity.java
 
 Copyright (C) 2015  dynamitetuning
@@ -18,14 +18,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -56,13 +53,13 @@ public abstract class commonActivity extends Activity{
 	}
 	public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        
+
 	        final myApp appState = ((myApp)getApplicationContext());
-	        
+	        /*
 	        try {
 		        // Register broadcast receivers for SMS sent and delivered intents
 		        registerReceiver(bcr = new BroadcastReceiver() {
-		            
+
 		        	@Override
 		            public void onReceive(Context context, Intent intent) {
 		                String message = null;
@@ -87,7 +84,7 @@ public abstract class commonActivity extends Activity{
 		                    message = "Error: Radio off.";
 		                    break;
 		                default:
-		                    message = "Unknown Error.";	
+		                    message = "Unknown Error.";
 		                }
 		                // Log.d(DEBUG_TAG, "Broadcast received="+message);
 		                String temp = settings.getString(getString(R.string.sp_lastAlarm), "-");
@@ -99,17 +96,17 @@ public abstract class commonActivity extends Activity{
 			        		toast.show();
 			        		SPeditor.putString(getString(R.string.sp_lastAlarm), settings.getString(getString(R.string.sp_lastAlarm), "-")+" - "+message).commit();
 		                }
-	
+
 		                try{
 			                // Counter to avoid appearance of multiple popups
-			                if (!appState.getSmsReportState()){ 
+			                if (!appState.getSmsReportState()){
 				                if (error)
 				                	showMsgPopUp("Error",message);
 				                else
 				                	showMsgPopUp("Information",message);
-				                
+
 				                appState.setSmsReportState(true);  // set WAIT_SMS_REPORT
-				                
+
 			                }
 		                } catch (Exception e){
 		                	e.printStackTrace();
@@ -119,11 +116,11 @@ public abstract class commonActivity extends Activity{
 		        }, new IntentFilter(ACTION_SMS_SENT));
 	        } catch (Exception ex) {
 	        	ex.printStackTrace();
-	        }
+	        }*/
 	 }
-	 
+
 	public abstract void onResume(Bundle savedInstaceState);
-	 
+
 	public void showMsgPopUp(String s_title, String s_msg){
 		// build dialog box to display message
 	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -139,13 +136,13 @@ public abstract class commonActivity extends Activity{
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	}
-	
+
 	public void sendSMS(String s_msg){
 		String PREFS_NAME = "MyPrefsFile";
     	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	sendSMS2numb(settings.getString(getString(R.string.sp_destNumb), "0"), s_msg, false);
     }
-	
+
 	public void sendSMS2numb (String s_destNumb, String s_msg, boolean GPStracker){
 		SmsManager sms = SmsManager.getDefault();
     	myApp appState = ((myApp)getApplicationContext());
@@ -153,10 +150,11 @@ public abstract class commonActivity extends Activity{
     	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
         String SMS_DEST_NUMBER = s_destNumb;
-        
+        SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true).commit();
+
         // Log.d("commonActivity:", "Destination: " + SMS_DEST_NUMBER);
         // Log.d("commonActivity:","Message: " + s_msg);
-        
+
         int myNum = 0;
         try {
     	    myNum = Integer.parseInt(settings.getString(getString(R.string.sp_maxSMScount), getString(R.string.cfg_maxSMScount)));
@@ -184,17 +182,17 @@ public abstract class commonActivity extends Activity{
 	        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
 	        	SPeditor.commit();
 	        }
-	        else {  // Send SMS only if destination number has been entered       	
-	        	
-	        	
-	        	
+	        else {  // Send SMS only if destination number has been entered
+
+
+
 	        	// Increment SMS counter
 	            int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
 	            counter++;
-	            
+
 	            SPeditor.putInt(getString(R.string.sp_smsCounter), counter);
 	            SPeditor.commit();
-	                        
+	            /*
 	        	appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
 		        try {
 		        	sms.sendTextMessage(SMS_DEST_NUMBER, null, s_msg, PendingIntent.getBroadcast(
@@ -209,7 +207,7 @@ public abstract class commonActivity extends Activity{
 		        	SPeditor.commit();
 		        	showMsgPopUp(getString(R.string.com_cnfgErrTitle), getString(R.string.com_cnfgErrTxt));
 		       	}catch(NullPointerException npe){
-		        	// Log.w("StandHeizungActivity:", "Exception thrown=" + npe.toString()); 
+		        	// Log.w("StandHeizungActivity:", "Exception thrown=" + npe.toString());
 		        	npe.printStackTrace();
 		        	if (GPStracker)
 		        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
@@ -217,13 +215,13 @@ public abstract class commonActivity extends Activity{
 		        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
 		        	SPeditor.commit();
 		        	showMsgPopUp(getString(R.string.com_cnfgErrTitle), getString(R.string.com_cnfgErrTxt));
-		        }     
+		        }    */
 	        }
         } catch (Exception e){
         	e.printStackTrace();
         }
 	}
-	
+
 	public void showInfo(PackageInfo pInfo){
 		final String PREFS_NAME = "MyPrefsFile";
 	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -238,9 +236,9 @@ public abstract class commonActivity extends Activity{
     	int i_counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
     	String s_prepaidCreditTitle = getString(R.string.com_PrepaidCreditTitle);
     	String s_prepaidCredit = settings.getString(getString(R.string.sp_prepaidCredit), getString(R.string.cfg_prepaidCredit));
-		
+
     	// showMsgPopUp(s_appname, s_versionPre+s_version+"\n"+s_authortitle+s_authorname+"\n"+s_smsCounter+i_counter);
-    	
+
     	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    String posBtnTxt = getString(R.string.com_pos_btn);
 	    builder.setMessage(s_versionPre+s_version+"\n"+s_authortitle+s_authorname+"\n"+s_smsCounter+i_counter+"\n"+s_prepaidCreditTitle+s_prepaidCredit)
@@ -266,10 +264,10 @@ public abstract class commonActivity extends Activity{
 	        });
 	    final AlertDialog alert = builder.create();
 	    alert.show();
-    	
+
 	}
-	
-	 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -280,16 +278,16 @@ public abstract class commonActivity extends Activity{
     public boolean onOptionsItemSelected(MenuItem item) {
     	PackageInfo pInfo = null;
 
-	     // Make Package Info available       
+	     // Make Package Info available
 	    	try {
 	    		pInfo = getPackageManager().getPackageInfo("com.dynamite.heaterrc",
 	    		PackageManager.GET_META_DATA);
-	    		
+
 	    	} catch (NameNotFoundException e) {
 	    		// Log.w("StandHeizungActivity:", "NameNotFound: " + e.getMessage());
 	    		e.printStackTrace();
 	    	}
-    	
+
     	// Handle item selection
         switch (item.getItemId()) {
             case R.id.exit:
@@ -305,7 +303,7 @@ public abstract class commonActivity extends Activity{
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
     /*
      * Method is creating a popup dialog asking whether the restore shall really be executed.
      */
@@ -318,7 +316,7 @@ public abstract class commonActivity extends Activity{
 	        .setCancelable(true)
 	        .setTitle(s_title)
 	        .setNegativeButton(getString(R.string.com_cancelbutton), new DialogInterface.OnClickListener() {
-				
+
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
 				}
@@ -339,8 +337,8 @@ public abstract class commonActivity extends Activity{
 	    final AlertDialog alert = builder.create();
 	    alert.show();
     }
-    
-    
+
+
     /*
      * Method is creating a popup dialog asking whether the restore shall really be executed.
      */
@@ -354,7 +352,7 @@ public abstract class commonActivity extends Activity{
 	        .setCancelable(true)
 	        .setTitle(s_title)
 	        .setNegativeButton(s_negBtntxt, new DialogInterface.OnClickListener() {
-				
+
 				public void onClick(DialogInterface dialog, int which) {
 					SPeditor.putInt(s_prefs, -1).commit();
 					dialog.dismiss();
@@ -367,12 +365,12 @@ public abstract class commonActivity extends Activity{
 	            }
 	        });
 	    final AlertDialog alert = builder.create();
-	    alert.show(); 
+	    alert.show();
     }
-    
+
     /*
 	 * Method is checking weather the given phone number is correct
-	 * 
+	 *
 	 * Returns: false if value is not ok
 	 * 			true if value is ok
 	 */
@@ -395,30 +393,30 @@ public abstract class commonActivity extends Activity{
 			return false;
 		if (number.contains(")"))
 			return false;
-		
+
 		// else return true
 		return true;
 	}
-	
+
 	public void showHelp(){
 		String helpText = getString(R.string.helptext);
 		showMsgPopUp(getString(R.string.sh_helpbutton), helpText);
 	}
-	
+
 	public void showHelpGPS(){
 		String helpText = getString(R.string.helptextGPS);
 		showMsgPopUp(getString(R.string.sh_helpbutton), helpText);
 	}
-	
+
 	public String int2time(int hour, int minute){
 		String sHour = hour+"";
 		String sMinute = minute+"";
-		
+
 		if (sHour.length() < 2)
 			sHour = "0"+sHour;
 		if (sMinute.length() < 2)
 			sMinute = "0"+sMinute;
-		
+
 		return sHour+":"+sMinute;
 	}
 }

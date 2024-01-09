@@ -1,5 +1,5 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 BootReceiver.java
 
 Copyright (C) 2015  dynamitetuning
@@ -18,26 +18,21 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 
-public class BootReceiver extends BroadcastReceiver {
+public class BootReceiver {
 	private static final String DEBUG_TAG = "BootReceiver";
 	public static final String PREFS_NAME = "MyPrefsFile";
-
+/*
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         // final SharedPreferences.Editor SPeditor = settings.edit();
-		// TODO 
+		// TODO
 		Log.d(DEBUG_TAG, "onReceive methode entered");
 		if (settings.getBoolean(context.getString(R.string.sp_schedule_active), false)){
 			myApp appStates = ((myApp)context.getApplicationContext());
 			appStates.setRecurringAlarm(context.getApplicationContext());
 			Log.d(DEBUG_TAG, "Schedule has been activated");
 		}
-	}
+	} */
 }
