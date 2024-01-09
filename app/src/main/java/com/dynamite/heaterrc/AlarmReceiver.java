@@ -2,7 +2,7 @@ package com.dynamite.heaterrc;
 /*
 AlarmReceiver.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -46,7 +46,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Date d = new Date();
         String weekDay = (String) android.text.format.DateFormat.format("EEEE", d);
-        /** Get the current time */
+        /* Get the current time */
         final Calendar cal = Calendar.getInstance();
         int iDay = cal.get(Calendar.DAY_OF_WEEK);
         int iHour = cal.get(Calendar.HOUR_OF_DAY);
@@ -70,8 +70,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     	} catch(NumberFormatException nfe) {
     		// Log.w("ConfigActivity:", "NumberFormatException: " + nfe.getMessage());
     		nfe.printStackTrace();
-    		myNum = 0;
-    	}
+        }
         // Uncheck the happened recurring Event
         SPeditor.putBoolean(appState.int2spWeekDay(iDay), false).commit();
 
@@ -94,7 +93,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         	String message="Error: Max SMS counter reached!";
         	SPeditor.putString(context.getString(R.string.sp_lastAlarm), settings.getString(context.getString(R.string.sp_lastAlarm), "-")+" - "+message);
         	SPeditor.putBoolean(context.getString(R.string.sp_schedule_active), false);
-	        SPeditor.putString(context.getString(R.string.sp_nextAlarm), "-");
+        	SPeditor.putString(context.getString(R.string.sp_nextAlarm), "-");
 	        SPeditor.commit();
         }
     }
@@ -103,12 +102,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 		SmsManager sms = SmsManager.getDefault();
     	SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
-        String SMS_DEST_NUMBER = s_destNumb;
 
         // Log.d(DEBUG_TAG, "Destination: " + SMS_DEST_NUMBER);
         // Log.d(DEBUG_TAG,"Message: " + s_msg);
 
-        if((SMS_DEST_NUMBER.contentEquals("0"))||(SMS_DEST_NUMBER == null)){
+        if(s_destNumb.contentEquals("0")){
         	// Log.d(DEBUG_TAG, "Config Error, destination is empty");
         	try {
 				Toast toast = Toast.makeText(context, context.getString(R.string.app_name)+
@@ -129,8 +127,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             SPeditor.putInt(context.getString(R.string.sp_smsCounter), counter);
             SPeditor.commit();
             final myApp appState = ((myApp)context.getApplicationContext());
-            appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
-            /*
+            /* appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
+
 	        try {
 	        	sms.sendTextMessage(SMS_DEST_NUMBER, null, s_msg, PendingIntent.getBroadcast(
 	                    context, 0, new Intent(ACTION_SMS_SENT), 0), null);
@@ -158,8 +156,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 	}
 
     private String int2time(int hour, int minute){
-		String sHour = hour+"";
-		String sMinute = minute+"";
+		String sHour = String.valueOf(hour);
+		String sMinute = String.valueOf(minute);
 
 		if (sHour.length() < 2)
 			sHour = "0"+sHour;

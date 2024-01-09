@@ -2,7 +2,7 @@ package com.dynamite.heaterrc;
 /*
 BootReceiver.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

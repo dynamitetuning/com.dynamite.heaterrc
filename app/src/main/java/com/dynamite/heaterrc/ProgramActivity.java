@@ -2,7 +2,7 @@ package com.dynamite.heaterrc;
 /*
 ProgramActivity.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -19,6 +19,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
@@ -29,7 +30,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -52,8 +52,8 @@ public class ProgramActivity extends commonActivity {
 
 	/** Called when the activity is first created. */
 	public static final String PREFS_NAME = "MyPrefsFile";
-	//public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
-    public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
+
+    //public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
     //public int SMS_RESULT_COUNTER=0;
 	SharedPreferences.OnSharedPreferenceChangeListener listener;
 	private final int IPC_ID = 1122;
@@ -84,6 +84,7 @@ public class ProgramActivity extends commonActivity {
     	// Log.d(DEBUG_TAG, "onResume has been called");
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,20 +159,18 @@ public class ProgramActivity extends commonActivity {
 
 
      // set click listener on the exitBtn
-        exitBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	// Log.d(DEBUG_TAG, "Exit Button pressed");
-            	System.exit(0);
-            }
-            });
+        exitBtn.setOnClickListener(v -> {
+            // Log.d(DEBUG_TAG, "Exit Button pressed");
+            System.exit(0);
+        });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         	public void onItemSelected(AdapterView<?> parent,
     	        View view, int pos, long id) {
 				// select the view based on spinner position
-    	    	VF.setDisplayedChild(pos);
+                VF.setDisplayedChild(pos);
 
-		        if (pos>0){
+                if (pos>0){
 		           // Obtain MotionEvent object
 		        	tvprogram.setText(getString(R.string.prog_tvprogram_schedule));
 		        } else {
@@ -181,162 +180,135 @@ public class ProgramActivity extends commonActivity {
 		        SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).commit();
     	    }
 
-    	    @SuppressWarnings("rawtypes")
-			public void onNothingSelected(AdapterView parent) {
+    	    public void onNothingSelected(AdapterView parent) {
     	      // Select the default position
     	    	// Log.d(DEBUG_TAG, "Nothing selected on Spinner. Position 0 selected.");
     	    	spinner.setSelection(0);
     	    }
 		});
 
-        helpschedBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showMsgPopUp(getString(R.string.prog_helpTitle), getString(R.string.prog_helpText));
-			}
-		});
+        helpschedBtn.setOnClickListener(v -> showMsgPopUp(getString(R.string.prog_helpTitle), getString(R.string.prog_helpText)));
 
         // set click listener on the setBtn
-        setBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-            	// Log.d(DEBUG_TAG, "Set Button pressed");
-            	sendingPB.setVisibility(View.VISIBLE);
-            	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
+        setBtn.setOnClickListener(v -> {
+            // Log.d(DEBUG_TAG, "Set Button pressed");
+            sendingPB.setVisibility(View.VISIBLE);
+            SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
 
-            	// Read Time
-                String hour;
-                String minute;
-                hour = setTime.getCurrentHour().toString();
-                minute = setTime.getCurrentMinute().toString();
-                // Add leading zero if less than two digit
-                if(hour.length() < 2)
-                	hour = "0" + hour;
-                if(minute.length() < 2)
-                	minute = "0" + minute;
+            // Read Time
+            String hour;
+            String minute;
+            hour = setTime.getCurrentHour().toString();
+            minute = setTime.getCurrentMinute().toString();
+            // Add leading zero if less than two digit
+            if(hour.length() < 2)
+                hour = "0" + hour;
+            if(minute.length() < 2)
+                minute = "0" + minute;
 
-                // Log.d(DEBUG_TAG,"Time set=" + hour + minute);
-                String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));
+            // Log.d(DEBUG_TAG,"Time set=" + hour + minute);
+            String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));
 
-                // send SMS with Start command followed by time
-                sendSMS(SMS_START_COMMAND+hour+minute);
+            // send SMS with Start command followed by time
+            sendSMS(SMS_START_COMMAND+hour+minute);
 
-                // Store hour and time to settings
-                if (setTime.getCurrentHour()!=settings.getInt(getString(R.string.sp_TimePickerHour), 12))
-                	SPeditor.putInt(getString(R.string.sp_TimePickerHour), setTime.getCurrentHour());
-                if (setTime.getCurrentMinute()!=settings.getInt(getString(R.string.sp_TimePickerMin), 30))
-                	SPeditor.putInt(getString(R.string.sp_TimePickerMin), setTime.getCurrentMinute());
-                // Commit the edits!
-                SPeditor.commit();
-            }
-            });
-
-        scheduleToggle.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				boolean on = scheduleToggle.isChecked();
-		        if (on) {
-		            SPeditor.putBoolean(getString(R.string.sp_schedule_active), true).commit();
-		        } else {
-		        	SPeditor.putBoolean(getString(R.string.sp_schedule_active), false).commit();
-		        }
-			}
-		});
-
-        sunday.setOnTouchListener(new OnTouchListener() {
-        	public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) {
-                    return true;
-                }
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
-
-		        dayPressed(getString(R.string.sp_sunday));
-				return false;
-			}
+            // Store hour and time to settings
+            if (setTime.getCurrentHour()!=settings.getInt(getString(R.string.sp_TimePickerHour), 12))
+                SPeditor.putInt(getString(R.string.sp_TimePickerHour), setTime.getCurrentHour());
+            if (setTime.getCurrentMinute()!=settings.getInt(getString(R.string.sp_TimePickerMin), 30))
+                SPeditor.putInt(getString(R.string.sp_TimePickerMin), setTime.getCurrentMinute());
+            // Commit the edits!
+            SPeditor.commit();
         });
 
-        monday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+        scheduleToggle.setOnClickListener(v -> {
+            boolean on = scheduleToggle.isChecked();
+if (on) {
+SPeditor.putBoolean(getString(R.string.sp_schedule_active), true).commit();
+} else {
+                SPeditor.putBoolean(getString(R.string.sp_schedule_active), false).commit();
+}
+        });
 
-		        dayPressed(getString(R.string.sp_monday));
-		        return false;
-			}
-		});
+        sunday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) {
+return true;
+}
+            if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        tuesday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+            dayPressed(getString(R.string.sp_sunday));
+            return false;
+        });
 
-		        dayPressed(getString(R.string.sp_tuesday));
-				return false;
-			}
-		});
+        monday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) {
+return true;
+}
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        wednesday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+dayPressed(getString(R.string.sp_monday));
+return false;
+        });
 
-		        dayPressed(getString(R.string.sp_wednesday));
-				return false;
-			}
-		});
+        tuesday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        thursday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+dayPressed(getString(R.string.sp_tuesday));
+            return false;
+        });
 
-		        dayPressed(getString(R.string.sp_thursday));
-				return false;
-			}
-		});
+        wednesday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        friday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+dayPressed(getString(R.string.sp_wednesday));
+            return false;
+        });
 
-		        dayPressed(getString(R.string.sp_friday));
-				return false;
-			}
-		});
+        thursday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        saturday.setOnTouchListener(new OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
-		        if(event.getAction()!=MotionEvent.ACTION_UP) return false;
+dayPressed(getString(R.string.sp_thursday));
+            return false;
+        });
 
-		        dayPressed(getString(R.string.sp_saturday));
-				return false;
-			}
-		});
+        friday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-        showDetails.setOnClickListener(new View.OnClickListener() {
+dayPressed(getString(R.string.sp_friday));
+            return false;
+        });
 
-			@Override
-			public void onClick(View v) {
-				try {
-					Intent myIntentA1A2 = new Intent(ProgramActivity.this,
-							AlarmDetails.class);
+        saturday.setOnTouchListener((v, event) -> {
+            if(event.getAction()==MotionEvent.ACTION_DOWN) return true;
+if(event.getAction()!=MotionEvent.ACTION_UP) return false;
 
-					Bundle myData = new Bundle();
-					myData.putString("myString1", "Hello Android");
-					myData.putDouble("myDouble1", 3.141592);
-					int[] myLittleArray = { 1, 2, 3 };
-					myData.putIntArray("myIntArray1", myLittleArray);
+dayPressed(getString(R.string.sp_saturday));
+            return false;
+        });
 
-					myIntentA1A2.putExtras(myData);
+        showDetails.setOnClickListener(v -> {
+            try {
+                Intent myIntentA1A2 = new Intent(ProgramActivity.this,
+                        AlarmDetails.class);
 
-					startActivityForResult(myIntentA1A2,IPC_ID);
-				} catch (Exception e) {
-					e.printStackTrace();
-					// Log.d(DEBUG_TAG, "showDetails: "+e.getMessage());
-				}
-			}
-		});
+                Bundle myData = new Bundle();
+                myData.putString("myString1", "Hello Android");
+                myData.putDouble("myDouble1", 3.141592);
+                int[] myLittleArray = { 1, 2, 3 };
+                myData.putIntArray("myIntArray1", myLittleArray);
+
+                myIntentA1A2.putExtras(myData);
+
+                startActivityForResult(myIntentA1A2,IPC_ID);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Log.d(DEBUG_TAG, "showDetails: "+e.getMessage());
+            }
+        });
         /*
      // Register broadcast receivers for SMS sent and delivered intents
         registerReceiver(new BroadcastReceiver() {
@@ -351,48 +323,46 @@ public class ProgramActivity extends commonActivity {
 
      // Use instance field for listener
      // It will not be gc'd as long as this instance is kept referenced
-     listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-       public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-    	   // Log.d(DEBUG_TAG, "Change on shared preference: "+key);
-			// reload values for textviews
-	        boolean SEND_BTN_ENABLED = settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false);
-	        if (key.compareTo(getString(R.string.sp_sendBtnEnabled))==0){
-	        	// Log.d(DEBUG_TAG, "sendBtnEnable="+SEND_BTN_ENABLED);
-	        	setBtn.setEnabled(SEND_BTN_ENABLED);
-	        	if(SEND_BTN_ENABLED)
-	        		sendingPB.setVisibility(View.INVISIBLE);
-	        }
-	        else if (key.compareTo(getString(R.string.sp_scheduledSend))==0){
-	        	if (settings.getBoolean(getString(R.string.sp_scheduledSend), false)){
-	        		// Log.d(DEBUG_TAG, "scheduledSend");
-		        	String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));
-		        	sendSMS(SMS_START_COMMAND);
-		        	SPeditor.putBoolean(getString(R.string.sp_scheduledSend), false).commit();
-	        	}
+     listener = (prefs, key) -> {
+         // Log.d(DEBUG_TAG, "Change on shared preference: "+key);
+          // reload values for textviews
+          boolean SEND_BTN_ENABLED = settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false);
+          if (key.compareTo(getString(R.string.sp_sendBtnEnabled))==0){
+              // Log.d(DEBUG_TAG, "sendBtnEnable="+SEND_BTN_ENABLED);
+              setBtn.setEnabled(SEND_BTN_ENABLED);
+              if(SEND_BTN_ENABLED)
+                  sendingPB.setVisibility(View.INVISIBLE);
+          }
+          else if (key.compareTo(getString(R.string.sp_scheduledSend))==0){
+              if (settings.getBoolean(getString(R.string.sp_scheduledSend), false)){
+                  // Log.d(DEBUG_TAG, "scheduledSend");
+                  String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));
+                  sendSMS(SMS_START_COMMAND);
+                  SPeditor.putBoolean(getString(R.string.sp_scheduledSend), false).commit();
+              }
 
-	        }
-	        else if (key.compareTo(getString(R.string.sp_schedule_active))==0){
-				myApp appStates = ((myApp)getApplicationContext());
-	        	if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
-	        		// Log.d(DEBUG_TAG, "Schedule has been activated");
-	        		appStates.setRecurringAlarm(getApplicationContext());
-	        	} else {
-	        		// Log.d(DEBUG_TAG, "Schedule has been deactivated");
-	        		delAlarm(appStates.getApplicationContext());
-	        		// When Schedule has been deactivated, there is no next alarm
-	        		SPeditor.putString(getString(R.string.sp_nextAlarm), "-").commit();
-	        		if (scheduleToggle.isChecked()){
-		        		Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.app_name)+
-			        			getString(R.string.prog_schedule_deactivated), Toast.LENGTH_SHORT);
-			        	toast.show();
-	        		}
-	        	}
-	        	// synchronize toggle button with settings
-	        	scheduleToggle.setChecked(settings.getBoolean(getString(R.string.sp_schedule_active), false));
-	        }
-	        // Update the weekday buttons, especially after that an SMS has been sent...
-	        updateWeekBtn();
-       }
+          }
+          else if (key.compareTo(getString(R.string.sp_schedule_active))==0){
+              myApp appStates = ((myApp)getApplicationContext());
+              if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
+                  // Log.d(DEBUG_TAG, "Schedule has been activated");
+                  appStates.setRecurringAlarm(getApplicationContext());
+              } else {
+                  // Log.d(DEBUG_TAG, "Schedule has been deactivated");
+                  delAlarm(appStates.getApplicationContext());
+                  // When Schedule has been deactivated, there is no next alarm
+                  SPeditor.putString(getString(R.string.sp_nextAlarm), "-").commit();
+                  if (scheduleToggle.isChecked()){
+                      Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.app_name)+
+                              getString(R.string.prog_schedule_deactivated), Toast.LENGTH_SHORT);
+                      toast.show();
+                  }
+              }
+              // synchronize toggle button with settings
+              scheduleToggle.setChecked(settings.getBoolean(getString(R.string.sp_schedule_active), false));
+          }
+          // Update the weekday buttons, especially after that an SMS has been sent...
+          updateWeekBtn();
      };
      settings.registerOnSharedPreferenceChangeListener(listener);
     }
@@ -405,7 +375,8 @@ public class ProgramActivity extends commonActivity {
         AlarmManager alarms = (AlarmManager) getSystemService(
                 Context.ALARM_SERVICE);
         try {
-			alarms.cancel(recurringSendSMS);
+            assert alarms != null;
+            alarms.cancel(recurringSendSMS);
 		} catch (NullPointerException npe){
         	npe.printStackTrace();
 			// Log.d(DEBUG_TAG, "Alarm could not be cancelled!");
@@ -433,9 +404,9 @@ public class ProgramActivity extends commonActivity {
     }
 
     private void updateWeekBtn(){
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-    	sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
-   		monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
+        final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
+        monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
    		tuesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_tuesday), false)));
    		wednesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_wednesday), false)));
    		thursday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_thursday), false)));
@@ -450,7 +421,7 @@ public class ProgramActivity extends commonActivity {
     		return 0xFFFF0000; // return red
     }
 
-    private boolean dayPressed(String weekday){
+    private void dayPressed(String weekday){
     	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         final SharedPreferences.Editor SPeditor = settings.edit();
 
@@ -460,8 +431,7 @@ public class ProgramActivity extends commonActivity {
         if (settings.getBoolean(weekday, false)){
 			SPeditor.putBoolean(weekday, false).commit();
 			updateWeekBtn(weekday, false);
-			return false;
-		} else {
+        } else {
 			pHour = settings.getInt(weekday+"Hour", pHour);
 			pMinute = settings.getInt(weekday+"Minute", pMinute);
 			// Log.d(DEBUG_TAG, "dayPressed: "+weekday+" "+int2time(pHour,pMinute));
@@ -470,13 +440,12 @@ public class ProgramActivity extends commonActivity {
 				showDialog(timeDialogId);
 			else
 				showDialog(TIME_DIALOG_ID);
-			return true;
-		}
+        }
 
     }
 
     /** Callback received when the user "picks" a time in the dialog */
-    private TimePickerDialog.OnTimeSetListener mTimeSetListener =
+    private final TimePickerDialog.OnTimeSetListener mTimeSetListener =
         new TimePickerDialog.OnTimeSetListener() {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 pHour = hourOfDay;
