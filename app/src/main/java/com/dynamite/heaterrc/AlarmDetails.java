@@ -19,7 +19,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-import android.app.NotificationManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -36,7 +35,7 @@ public class AlarmDetails extends commonActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarmdetails);
-
+/*
       //---look up the notification manager service---
         NotificationManager nm = (NotificationManager)
             getSystemService(NOTIFICATION_SERVICE);
@@ -47,7 +46,7 @@ public class AlarmDetails extends commonActivity {
             nm.cancel(getIntent().getExtras().getInt("NotifID"));
         } catch (NullPointerException npe){
             npe.printStackTrace();
-        }
+        } */
         // Restore preferences
         final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         // final SharedPreferences.Editor SPeditor = settings.edit();
