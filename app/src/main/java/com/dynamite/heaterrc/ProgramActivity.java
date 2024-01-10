@@ -20,9 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -169,15 +167,13 @@ public class ProgramActivity extends commonActivity {
     	        View view, int pos, long id) {
 				// select the view based on spinner position
                 VF.setDisplayedChild(pos);
-
                 if (pos>0){
 		           // Obtain MotionEvent object
 		        	tvprogram.setText(getString(R.string.prog_tvprogram_schedule));
 		        } else {
 		        	tvprogram.setText(getString(R.string.prog_tvprogram));
 		        }
-
-		        SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).commit();
+                SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).commit();
     	    }
 
     	    public void onNothingSelected(AdapterView parent) {
@@ -369,7 +365,7 @@ dayPressed(getString(R.string.sp_saturday));
 
     private void delAlarm(Context context){
     	// Log.d(DEBUG_TAG, "delAlarm called");
-    	Intent downloader = new Intent(context, AlarmReceiver.class);
+/*    	Intent downloader = new Intent(context, AlarmReceiver.class);
     	PendingIntent recurringSendSMS = PendingIntent.getBroadcast(context,
                 0, downloader, PendingIntent.FLAG_CANCEL_CURRENT);
         AlarmManager alarms = (AlarmManager) getSystemService(
@@ -380,7 +376,7 @@ dayPressed(getString(R.string.sp_saturday));
 		} catch (NullPointerException npe){
         	npe.printStackTrace();
 			// Log.d(DEBUG_TAG, "Alarm could not be cancelled!");
-		}
+		}*/
     }
 
     private void updateWeekBtn(String weekday, boolean btnset){
@@ -407,11 +403,11 @@ dayPressed(getString(R.string.sp_saturday));
         final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
         monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
-   		tuesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_tuesday), false)));
-   		wednesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_wednesday), false)));
-   		thursday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_thursday), false)));
-    	friday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_friday), false)));
-   		saturday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_saturday), false)));
+        tuesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_tuesday), false)));
+        wednesday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_wednesday), false)));
+        thursday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_thursday), false)));
+        friday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_friday), false)));
+        saturday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_saturday), false)));
     }
 
     private int btnColor(boolean btnset){

@@ -19,10 +19,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 
 public class DisplayNotifications extends commonActivity {
@@ -77,7 +73,7 @@ public class DisplayNotifications extends commonActivity {
 	        }, new IntentFilter(ACTION_SMS_SENT));
         } catch (Exception ex) {
         	ex.printStackTrace();
-        }*/
+        }
 
         //---get the notification ID for the notification;
         // passed in by the MainActivity---
@@ -93,7 +89,7 @@ public class DisplayNotifications extends commonActivity {
         i.putExtra("NotifID", notifID);
 
         PendingIntent detailsIntent =
-            PendingIntent.getActivity(this, 0, i, 0);
+            PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationManager nm = (NotificationManager)
             getSystemService(NOTIFICATION_SERVICE);
@@ -113,7 +109,7 @@ public class DisplayNotifications extends commonActivity {
         nm.notify(notifID, notif);
         //---destroy the activity---
 
-        finish();
+        finish(); */
     }
 
     public void onResume(Bundle savedInstaceState){

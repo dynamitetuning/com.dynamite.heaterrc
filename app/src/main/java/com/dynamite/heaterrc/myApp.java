@@ -19,18 +19,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.format.Time;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class myApp extends Application{
     public static final String PREFS_NAME = "MyPrefsFile";
@@ -47,7 +42,7 @@ public class myApp extends Application{
         // we know mobiletuts updates at right around 1130 GMT.
         // let's grab new stuff at around 11:45 GMT, inexactly
     	// Log.d(DEBUG_TAG, "setRecurringAlarm called ");
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+/*    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	final SharedPreferences.Editor SPeditor = settings.edit();
     	final Calendar cal = Calendar.getInstance();
 
@@ -108,12 +103,14 @@ public class myApp extends Application{
 
         SPeditor.putString(getString(R.string.sp_nextAlarm), int2WeekDay(dayOfWeek)+" "+int2time(hourOfDay,minute))
         	.commit();
-
+*/
         /* setRepeating(int type, long triggerAtMillis, long intervalMillis, PendingIntent operation)
         	Schedule a repeating alarm. */
-        long checkTime = updateTime.getTimeInMillis()/1000;
+
+        //long checkTime = updateTime.getTimeInMillis()/1000;
         // check if time is in the past and correct it.
         /* Get the current time */
+        /*
         long actualTime = cal.getTimeInMillis()/1000;
         if (actualTime > checkTime){
         	// Shift for one week
@@ -130,7 +127,7 @@ public class myApp extends Application{
 			// Log.d(DEBUG_TAG, "setRecurringAlarm="+updateTime.getTimeInMillis());
 		} catch (NullPointerException npe){
         	npe.printStackTrace();
-		}
+		} */
     }
 
 	public int getNextWeekDay (){
@@ -175,13 +172,12 @@ public class myApp extends Application{
     			return i;
     		}
     	}
-    	for (int i=1; i<=day; i++){
+        for (int i=1; i<=day; i++){
     		if (settings.getBoolean(int2spWeekDay(i), false)){
     			return i;
     		}
     	}
-
-    	return -1;
+        return -1;
 	}
 
 	private String int2time(int hour, int minute){

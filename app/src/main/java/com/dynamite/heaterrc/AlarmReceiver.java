@@ -93,8 +93,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         	String message="Error: Max SMS counter reached!";
         	SPeditor.putString(context.getString(R.string.sp_lastAlarm), settings.getString(context.getString(R.string.sp_lastAlarm), "-")+" - "+message);
         	SPeditor.putBoolean(context.getString(R.string.sp_schedule_active), false);
-        	SPeditor.putString(context.getString(R.string.sp_nextAlarm), "-");
-	        SPeditor.commit();
+            SPeditor.putString(context.getString(R.string.sp_nextAlarm), "-");
+            SPeditor.commit();
         }
     }
 

@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 8
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.dynamite.heaterrc"
         minSdkVersion 8 //14
-        targetSdkVersion 8 //22, 28
-        versionCode 16
-        versionName "1.6"
+        targetSdkVersion 33 //22, 28
+        versionCode 17
+        versionName "1.7"
     }
 
     buildTypes {

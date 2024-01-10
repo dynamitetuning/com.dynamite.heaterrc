@@ -357,7 +357,7 @@ public abstract class commonActivity extends Activity{
 		if (number.contains(".")) return false;
 		if (number.contains(":")) return false;
 		if (number.contains("/")) return false;
-		if (number.contains("(")) return false;
+        if (number.contains("(")) return false;
         return !number.contains(")");
 
 		// else return true
