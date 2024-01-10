@@ -95,30 +95,30 @@ public class ProgramActivity extends commonActivity {
         final SharedPreferences.Editor SPeditor = settings.edit();
 
         // Button initialization
-        exitBtn = (Button)findViewById(R.id.exitbutton);
-        setBtn = (Button)findViewById(R.id.setbutton);
-        helpschedBtn = (Button)findViewById(R.id.btnhelpsched);
+        exitBtn = findViewById(R.id.exitbutton);
+        setBtn = findViewById(R.id.setbutton);
+        helpschedBtn = findViewById(R.id.btnhelpsched);
         setBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
 
         // initialize TextView
-        tvprogram = (TextView)findViewById(R.id.tvprogram);
+        tvprogram = findViewById(R.id.tvprogram);
 
         // initialize ProgressBar
-        sendingPB = (ProgressBar)findViewById(R.id.programPB);
+        sendingPB = findViewById(R.id.programPB);
         sendingPB.setVisibility(View.INVISIBLE);
 
         // initialize ToggleButton
-        scheduleToggle = (ToggleButton)findViewById(R.id.scheduletoggle);
+        scheduleToggle = findViewById(R.id.scheduletoggle);
         scheduleToggle.setChecked(settings.getBoolean(getString(R.string.sp_schedule_active), false));
 
         // initialize timepicker
-        setTime = (TimePicker)findViewById(R.id.settime);
+        setTime = findViewById(R.id.settime);
         setTime.setIs24HourView(true);
         setTime.setCurrentHour(settings.getInt(getString(R.string.sp_TimePickerHour), 12));
         setTime.setCurrentMinute(settings.getInt(getString(R.string.sp_TimePickerMin), 30));
 
         // initialize Spinner
-        final Spinner spinner = (Spinner)findViewById(R.id.spinner1);
+        final Spinner spinner = findViewById(R.id.spinner1);
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.selection_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -126,18 +126,18 @@ public class ProgramActivity extends commonActivity {
         spinner.setSelection(settings.getInt(getString(R.string.sp_progSpinnerPos), 0));
 
         // initialize ViewFlipper
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+        VF = findViewById(R.id.ViewFlipper01);
 
         // initialize Weekdays buttons
-        sunday = (Button)findViewById(R.id.btnsunday);
-        monday = (Button)findViewById(R.id.btnmonday);
-        tuesday = (Button)findViewById(R.id.btntuesday);
-        wednesday = (Button)findViewById(R.id.btnwednesday);
-        thursday = (Button)findViewById(R.id.btnthursday);
-        friday = (Button)findViewById(R.id.btnfriday);
-        saturday = (Button)findViewById(R.id.btnsaturday);
+        sunday = findViewById(R.id.btnsunday);
+        monday = findViewById(R.id.btnmonday);
+        tuesday = findViewById(R.id.btntuesday);
+        wednesday = findViewById(R.id.btnwednesday);
+        thursday = findViewById(R.id.btnthursday);
+        friday = findViewById(R.id.btnfriday);
+        saturday = findViewById(R.id.btnsaturday);
 
-        showDetails = (Button)findViewById(R.id.btnshowdetail);
+        showDetails = findViewById(R.id.btnshowdetail);
 
         sunday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_sunday), false)));
         monday.setBackgroundColor(btnColor(settings.getBoolean(getString(R.string.sp_monday), false)));
@@ -173,7 +173,7 @@ public class ProgramActivity extends commonActivity {
 		        } else {
 		        	tvprogram.setText(getString(R.string.prog_tvprogram));
 		        }
-                SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).commit();
+                SPeditor.putInt(getString(R.string.sp_progSpinnerPos), pos).apply();
     	    }
 
     	    public void onNothingSelected(AdapterView parent) {
@@ -423,7 +423,7 @@ dayPressed(getString(R.string.sp_saturday));
 
     	SPeditor.putString(getString(R.string.sp_lastTouched), weekday);
     	SPeditor.putBoolean(getString(R.string.sp_schedule_active), false);
-    	SPeditor.commit();
+    	SPeditor.apply();
         if (settings.getBoolean(weekday, false)){
 			SPeditor.putBoolean(weekday, false).commit();
 			updateWeekBtn(weekday, false);
@@ -460,7 +460,7 @@ dayPressed(getString(R.string.sp_saturday));
     	if (lastTouched.compareTo("-")!=0){
     		SPeditor.putBoolean(lastTouched, true);
             SPeditor.putInt(lastTouched+"Hour", pHour);
-            SPeditor.putInt(lastTouched+"Minute", pMinute).commit();
+            SPeditor.putInt(lastTouched+"Minute", pMinute).apply();
             updateWeekBtn(lastTouched, true);
             if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
 	            myApp appStates = ((myApp)getApplicationContext());

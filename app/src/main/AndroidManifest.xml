@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dynamite.heaterrc">
 
     <application
@@ -16,10 +17,10 @@
 
         <activity
             android:name=".SHtabWidget"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,9 +30,9 @@
         </activity>
         <activity
             android:name=".StandHeizungActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,9 +41,9 @@
         </activity>
         <activity
             android:name=".ConfigActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,9 +52,9 @@
         </activity>
         <activity
             android:name=".ProgramActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,9 +63,9 @@
         </activity>
         <activity
             android:name=".GPStrackerActivity"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -80,7 +81,6 @@
         </activity>
         <activity
             android:name=".AlarmDetails"
-            android:label="@string/app_name"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.dynamite.heaterrc.AlarmDetails" />

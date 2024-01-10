@@ -44,24 +44,24 @@ public class StandHeizungActivity extends commonActivity {
         final SharedPreferences.Editor SPeditor = settings.edit();
 
         // Button initialization
-        final Button exitBtn = (Button)findViewById(R.id.exitbutton);
-        final Button startBtn = (Button)findViewById(R.id.startbutton);
+        final Button exitBtn = findViewById(R.id.exitbutton);
+        final Button startBtn = findViewById(R.id.startbutton);
         startBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button stopBtn = (Button)findViewById(R.id.stopbutton);
+        final Button stopBtn = findViewById(R.id.stopbutton);
         stopBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button tempBtn = (Button)findViewById(R.id.tempbutton);
+        final Button tempBtn = findViewById(R.id.tempbutton);
         tempBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button summerBtn = (Button)findViewById(R.id.summerbutton);
+        final Button summerBtn = findViewById(R.id.summerbutton);
         summerBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button winterBtn = (Button)findViewById(R.id.winterbutton);
+        final Button winterBtn = findViewById(R.id.winterbutton);
         winterBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button statusBtn = (Button)findViewById(R.id.statusbutton);
+        final Button statusBtn = findViewById(R.id.statusbutton);
         statusBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabled), false));
-        final Button infoBtn = (Button)findViewById(R.id.helpbutton);
+        final Button infoBtn = findViewById(R.id.helpbutton);
 
         // initialize ProgressBar
         final ProgressBar sendingPB;
-        sendingPB = (ProgressBar)findViewById(R.id.mainPB);
+        sendingPB = findViewById(R.id.mainPB);
         sendingPB.setVisibility(View.INVISIBLE);
 
      // set click listener on the exitBtn
@@ -73,7 +73,7 @@ public class StandHeizungActivity extends commonActivity {
      // set click listener on the startBtn
         startBtn.setOnClickListener(v -> {
             // Log.d(DEBUG_TAG, "Start Button pressed");
-            SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).commit();
+            SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false).apply();
             sendingPB.setVisibility(View.VISIBLE);
 
             String SMS_START_COMMAND = settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd));

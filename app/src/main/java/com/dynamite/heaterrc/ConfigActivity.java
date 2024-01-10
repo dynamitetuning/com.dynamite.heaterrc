@@ -45,49 +45,49 @@ public class ConfigActivity extends commonActivity {
 
         // Button initialization
         Button exitBtn;
-        exitBtn = (Button)findViewById(R.id.exitbutton);
+        exitBtn = findViewById(R.id.exitbutton);
         Button saveBtn;
-        saveBtn = (Button)findViewById(R.id.savebutton);
-        final ToggleButton smsFeedback = (ToggleButton)findViewById(R.id.SMSfeedbackbutton);
+        saveBtn = findViewById(R.id.savebutton);
+        final ToggleButton smsFeedback = findViewById(R.id.SMSfeedbackbutton);
         smsFeedback.setChecked(settings.getBoolean(getString(R.string.sp_smsFeedback), true));
-        final CheckBox smsSendWarning = (CheckBox)findViewById(R.id.ShowSMSwarning);
+        final CheckBox smsSendWarning = findViewById(R.id.ShowSMSwarning);
         smsSendWarning.setChecked(settings.getBoolean(getString(R.string.sp_sendSMSwarning), false));
         smsSendWarning.setVisibility(View.INVISIBLE); // make this option invisible for the time being.
-        final CheckBox GPStracker = (CheckBox)findViewById(R.id.EnableGPStracker);
+        final CheckBox GPStracker = findViewById(R.id.EnableGPStracker);
         GPStracker.setChecked(settings.getBoolean(getString(R.string.sp_GPStrackerTab), false));
         GPStracker.setVisibility(View.VISIBLE); // make this option invisible for the time being (0xFF=invisible).
 
 
         // initialize EditText
         final EditText tPhoneNumber;
-        tPhoneNumber = (EditText)findViewById(R.id.phonenumber);
+        tPhoneNumber = findViewById(R.id.phonenumber);
         tPhoneNumber.setText(settings.getString(getString(R.string.sp_destNumb), getString(R.string.cfg_phonenumber)));
         final EditText tStartCmd;
-        tStartCmd = (EditText)findViewById(R.id.startcmd);
+        tStartCmd = findViewById(R.id.startcmd);
         tStartCmd.setText(settings.getString(getString(R.string.sp_startCmd), getString(R.string.cfg_startcmd)));
         final EditText tStopCmd;
-        tStopCmd = (EditText)findViewById(R.id.stopcmd);
+        tStopCmd = findViewById(R.id.stopcmd);
         tStopCmd.setText(settings.getString(getString(R.string.sp_stopCmd), getString(R.string.cfg_stopcmd)));
         final EditText tTempCmd;
-        tTempCmd = (EditText)findViewById(R.id.tempcmd);
+        tTempCmd = findViewById(R.id.tempcmd);
         tTempCmd.setText(settings.getString(getString(R.string.sp_tempCmd), getString(R.string.cfg_tempcmd)));
-        final EditText tSummerCmd = (EditText)findViewById(R.id.summercmd);
+        final EditText tSummerCmd = findViewById(R.id.summercmd);
         tSummerCmd.setText(settings.getString(getString(R.string.sp_summerCmd), getString(R.string.cfg_summercmd)));
-        final EditText tWinterCmd = (EditText)findViewById(R.id.wintercmd);
+        final EditText tWinterCmd = findViewById(R.id.wintercmd);
         tWinterCmd.setText(settings.getString(getString(R.string.sp_winterCmd), getString(R.string.cfg_wintercmd)));
-        final EditText tStatusCmd = (EditText)findViewById(R.id.statuscmd);
+        final EditText tStatusCmd = findViewById(R.id.statuscmd);
         tStatusCmd.setText(settings.getString(getString(R.string.sp_statusCmd), getString(R.string.cfg_statuscmd)));
-        final EditText tHeatDurationCmd = (EditText)findViewById(R.id.heatdurationcmd);
+        final EditText tHeatDurationCmd = findViewById(R.id.heatdurationcmd);
         tHeatDurationCmd.setText(settings.getString(getString(R.string.sp_heatDurationCmd), getString(R.string.cfg_heattimercmd)));
-        final EditText tHeatDuration = (EditText)findViewById(R.id.heatduration);
+        final EditText tHeatDuration = findViewById(R.id.heatduration);
         tHeatDuration.setText(settings.getString(getString(R.string.sp_heatDuration), getString(R.string.cfg_heatduration)));
-        final EditText tSMSfeedbackCmd = (EditText)findViewById(R.id.SMSfeedbackcmd);
+        final EditText tSMSfeedbackCmd = findViewById(R.id.SMSfeedbackcmd);
         tSMSfeedbackCmd.setText(settings.getString(getString(R.string.sp_smsFeedbackCmd), getString(R.string.cfg_SMSfeedbackcmd)));
-        final EditText tmaxSMScount = (EditText)findViewById(R.id.maxSMScount);
+        final EditText tmaxSMScount = findViewById(R.id.maxSMScount);
         tmaxSMScount.setText(settings.getString(getString(R.string.sp_maxSMScount), getString(R.string.cfg_maxSMScount)));
-        final EditText tPrepaidCredit = (EditText)findViewById(R.id.prepaidCredit);
+        final EditText tPrepaidCredit = findViewById(R.id.prepaidCredit);
         tPrepaidCredit.setText(settings.getString(getString(R.string.sp_prepaidCredit), getString(R.string.cfg_prepaidCredit)));
-        final EditText tSMScost = (EditText)findViewById(R.id.SMScost);
+        final EditText tSMScost = findViewById(R.id.SMScost);
         tSMScost.setText(settings.getString(getString(R.string.sp_SMScost), getString(R.string.cfg_SMScost)));
 
      // check actual configuration and enable buttons
@@ -95,7 +95,7 @@ public class ConfigActivity extends commonActivity {
         	// Log.d(DEBUG_TAG, "Destination number should be ok, enable buttons.");
 
         	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true);
-        	SPeditor.commit();
+        	SPeditor.apply();
         }
 
      // set click listener on the exitBtn

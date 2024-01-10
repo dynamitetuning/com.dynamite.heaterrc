@@ -142,7 +142,7 @@ public abstract class commonActivity extends Activity{
     	String PREFS_NAME = "MyPrefsFile";
     	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
-        SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true).commit();
+        SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true).apply();
 
         // Log.d("commonActivity:", "Destination: " + SMS_DEST_NUMBER);
         // Log.d("commonActivity:","Message: " + s_msg);
@@ -241,7 +241,7 @@ public abstract class commonActivity extends Activity{
                     SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true);
                 }
                 // Reset the SMS counter
-                SPeditor.putInt(getString(R.string.sp_smsCounter), 0).commit();
+                SPeditor.putInt(getString(R.string.sp_smsCounter), 0).apply();
                 dialog.dismiss();
                 Toast toast = Toast.makeText(getBaseContext(),getString(R.string.com_reset_txt), Toast.LENGTH_LONG);
                         toast.show();
@@ -307,7 +307,7 @@ public abstract class commonActivity extends Activity{
                 SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor SPeditor = settings.edit();
                 int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
-                SPeditor.clear().commit();
+                SPeditor.clear().apply();
                 SPeditor.putInt(getString(R.string.sp_smsCounter), counter);
                 SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
                 SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
@@ -332,7 +332,7 @@ public abstract class commonActivity extends Activity{
 	        .setCancelable(true)
 	        .setTitle(s_title)
 	        .setNegativeButton(s_negBtntxt, (dialog, which) -> {
-                SPeditor.putInt(s_prefs, -1).commit();
+                SPeditor.putInt(s_prefs, -1).apply();
                 dialog.dismiss();
             })
 	        .setPositiveButton(s_posBtntxt, (dialog, id) -> {
@@ -350,16 +350,18 @@ public abstract class commonActivity extends Activity{
 	 * 			true if value is ok
 	 */
 	public boolean isPhoneNumberCorrect(String number){
-		if (number.compareTo("0") == 0)	return false;
-		if (number.compareTo("") == 0) return false;
-		if (number.contains(";")) return false;
-		if (number.contains(",")) return false;
-		if (number.contains(".")) return false;
-		if (number.contains(":")) return false;
-		if (number.contains("/")) return false;
-        if (number.contains("(")) return false;
-        return !number.contains(")");
-
+		switch (number){
+            case "0":
+            case "":
+            case ";":
+            case ",":
+            case ".":
+            case ":":
+            case "/":
+            case "(":
+                return false;
+            default: return !number.contains(")");
+        }
 		// else return true
     }
 

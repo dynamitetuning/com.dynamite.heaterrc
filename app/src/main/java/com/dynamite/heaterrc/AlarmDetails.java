@@ -53,13 +53,13 @@ public class AlarmDetails extends commonActivity {
         // final SharedPreferences.Editor SPeditor = settings.edit();
 
         // initialize TextViews
-        tLastAlarm = (TextView)findViewById(R.id.tvalarmdetails);
-        tNextAlarm = (TextView)findViewById(R.id.tvnextschedule);
+        tLastAlarm = findViewById(R.id.tvalarmdetails);
+        tNextAlarm = findViewById(R.id.tvnextschedule);
 
         tLastAlarm.setText(settings.getString(getString(R.string.sp_lastAlarm), "-"));
         tNextAlarm.setText(settings.getString(getString(R.string.sp_nextAlarm), "-"));
 
-        bExit = (Button)findViewById(R.id.btnExit);
+        bExit = findViewById(R.id.btnExit);
 
         // set click listener on the exitBtn
         bExit.setOnClickListener(v -> {

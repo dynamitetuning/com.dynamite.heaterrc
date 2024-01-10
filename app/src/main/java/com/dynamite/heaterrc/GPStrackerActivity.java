@@ -43,30 +43,30 @@ public class GPStrackerActivity extends commonActivity {
 
      // Button initialization
         final Button GPSposReqBtn;
-        GPSposReqBtn = (Button)findViewById(R.id.trackerreqbutton);
+        GPSposReqBtn = findViewById(R.id.trackerreqbutton);
         GPSposReqBtn.setEnabled(settings.getBoolean(getString(R.string.sp_sendBtnEnabledGPS), false));
         Button exitBtn;
-        exitBtn = (Button)findViewById(R.id.exitbutton);
+        exitBtn = findViewById(R.id.exitbutton);
         Button helpBtn;
-        helpBtn = (Button)findViewById(R.id.helpbutton);
+        helpBtn = findViewById(R.id.helpbutton);
 
      // initialize EditText
         final EditText tPhoneNumberGPS;
-        tPhoneNumberGPS = (EditText)findViewById(R.id.phonenumberGPS);
+        tPhoneNumberGPS = findViewById(R.id.phonenumberGPS);
         tPhoneNumberGPS.setText(settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber)));
         final EditText tPosReqCmd;
-        tPosReqCmd = (EditText)findViewById(R.id.PosReqCmd);
+        tPosReqCmd = findViewById(R.id.PosReqCmd);
         tPosReqCmd.setText(settings.getString(getString(R.string.sp_GPSposReqCmd), getString(R.string.cfg_GPSposReqCmd)));
 
      // initialize ProgressBar
         final ProgressBar sendingPB;
-        sendingPB = (ProgressBar)findViewById(R.id.GPStrackPB);
+        sendingPB = findViewById(R.id.GPStrackPB);
         sendingPB.setVisibility(View.INVISIBLE);
 
      // check actual configuration and enable buttons
         if (isPhoneNumberCorrect(settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber)))){
         	// Log.d("GPStrackerActivity:", "Destination number should be ok, enable buttons.");
-        	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), true).commit();
+        	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), true).apply();
         }
 
         tPhoneNumberGPS.setOnFocusChangeListener((v, hasFocus) -> {

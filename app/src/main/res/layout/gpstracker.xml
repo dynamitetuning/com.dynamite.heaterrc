@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -53,7 +54,8 @@
             android:ems="10"
             android:hint="@string/cfg_phonenumber"
             android:inputType="phone"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:ignore="Autofill" />
 
         <TextView
             android:id="@+id/tvPosReqCmd"
@@ -69,7 +71,8 @@
             android:ems="10"
             android:hint="@string/cfg_GPSposReqCmd"
             android:inputType="text"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            tools:ignore="Autofill" />
 
     </LinearLayout>
 

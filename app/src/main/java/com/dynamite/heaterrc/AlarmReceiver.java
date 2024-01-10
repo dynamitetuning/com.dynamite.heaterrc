@@ -62,7 +62,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         String lastAlarm = weekDay + " " + int2time(iHour,iMinute);
         SPeditor.putString(context.getString(R.string.sp_lastAlarm), lastAlarm)
-        .commit();
+        .apply();
 
         int myNum = 0;
         try {
@@ -125,7 +125,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             counter++;
 
             SPeditor.putInt(context.getString(R.string.sp_smsCounter), counter);
-            SPeditor.commit();
+            SPeditor.apply();
             final myApp appState = ((myApp)context.getApplicationContext());
             /* appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
 
