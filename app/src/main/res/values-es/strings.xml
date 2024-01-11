@@ -95,5 +95,6 @@ Para usar el inicio programada utilizar la pestaña \'Timer\'.</string>
     <string name="prog_scheduleToggleOFF">OFF</string>
     <string name="prog_helpTitle">Ayudar</string>
     <string name="prog_helpText">Elija \'Enviar inmediatamente\' si desea enviar el mensaje completo de tiempo.  Elija \'Envío programado\' si desea enviar el mensaje de inicio para la hora y el día programados.</string>
+    <string name="prog_schedule_activated">-Timer ha sido activado.</string>
 
 </resources>
