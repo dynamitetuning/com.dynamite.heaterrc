@@ -342,7 +342,10 @@ dayPressed(getString(R.string.sp_saturday));
               myApp appStates = ((myApp)getApplicationContext());
               if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
                   // Log.d(DEBUG_TAG, "Schedule has been activated");
-                  appStates.setRecurringAlarm(getApplicationContext());
+                  // appStates.setRecurringAlarm(getApplicationContext());
+                  Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.app_name)+
+                          getString(R.string.prog_schedule_activated), Toast.LENGTH_SHORT);
+                  toast.show();
               } else {
                   // Log.d(DEBUG_TAG, "Schedule has been deactivated");
                   delAlarm(appStates.getApplicationContext());
@@ -464,7 +467,7 @@ dayPressed(getString(R.string.sp_saturday));
             updateWeekBtn(lastTouched, true);
             if (settings.getBoolean(getString(R.string.sp_schedule_active), false)){
 	            myApp appStates = ((myApp)getApplicationContext());
-	    		appStates.setRecurringAlarm(getApplicationContext());
+	    		// appStates.setRecurringAlarm(getApplicationContext());
     		}
         } else {
         	// Log.d(DEBUG_TAG, "displayToast: Could not find lastTouched");
