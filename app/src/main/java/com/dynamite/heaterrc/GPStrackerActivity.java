@@ -90,11 +90,10 @@ public class GPStrackerActivity extends commonActivity {
         GPSposReqBtn.setOnClickListener(v -> {
             // Log.d("GPStrackerActivity:", "GPSposReqBtn Button pressed");
             SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false).commit();
-            sendingPB.setVisibility(View.VISIBLE);
+            //sendingPB.setVisibility(View.VISIBLE);
 
-            String SMS_START_COMMAND = settings.getString(getString(R.string.sp_GPSposReqCmd), getString(R.string.cfg_GPSposReqCmd));
-            String DEST_NUMB = settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber));
-            sendSMS2numb(DEST_NUMB, SMS_START_COMMAND, true);
+            SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), true).commit();
+            //sendSMS2numb(settings.getString(getString(R.string.sp_destNumbGPS), getString(R.string.cfg_phonenumber)), settings.getString(getString(R.string.sp_GPSposReqCmd), getString(R.string.cfg_GPSposReqCmd)), true);
         });
 
      // set click listener on the helpBtn
@@ -125,6 +124,7 @@ public class GPStrackerActivity extends commonActivity {
             // Log.d("GPStrackerActivity:", "Change on shared preference: "+key);
             // reload values for textviews
             boolean SEND_BTN_ENABLED = settings.getBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
+            assert key != null;
             if (key.compareTo(getString(R.string.sp_sendBtnEnabledGPS))==0){
                 // Log.d("GPStrackerActivity:", "sendBtnEnable="+SEND_BTN_ENABLED);
                 GPSposReqBtn.setEnabled(SEND_BTN_ENABLED);
