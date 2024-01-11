@@ -22,7 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -34,20 +33,20 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public abstract class commonActivity extends Activity{
-    public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
+    //public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
 	public static final String PREFS_NAME = "MyPrefsFile";
-	public BroadcastReceiver bcr;
+	//public BroadcastReceiver bcr;
 	// private static final String DEBUG_TAG = "commonActivity";
 
 	// Methods
-	public void onDestroy(){
+/*	public void onDestroy(){
 		super.onDestroy();
 		try {
 			unregisterReceiver(bcr);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
