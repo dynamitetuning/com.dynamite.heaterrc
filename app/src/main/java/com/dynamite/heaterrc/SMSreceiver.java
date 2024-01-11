@@ -28,7 +28,7 @@ public class SMSreceiver{
 		Bundle bundle = intent.getExtras();
 		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
-// TODO Garbage collected?
+
 		// Log.d(DEBUG_TAG, "Entered onReceive method...");
 
 		try {

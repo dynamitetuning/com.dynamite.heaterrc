@@ -27,7 +27,7 @@ public class BootReceiver {
 	public void onReceive(Context context, Intent intent) {
 		final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         // final SharedPreferences.Editor SPeditor = settings.edit();
-		// TODO
+
 		Log.d(DEBUG_TAG, "onReceive methode entered");
 		if (settings.getBoolean(context.getString(R.string.sp_schedule_active), false)){
 			myApp appStates = ((myApp)context.getApplicationContext());
