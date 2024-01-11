@@ -19,25 +19,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.telephony.SmsManager;
-import android.widget.Toast;
-
-import java.util.Calendar;
-import java.util.Date;
-
-public class AlarmReceiver extends BroadcastReceiver {
+public class AlarmReceiver {
     //private static final String DEBUG_TAG = "AlarmReceiver";
-    public static final String PREFS_NAME = "MyPrefsFile";
+/*    public static final String PREFS_NAME = "MyPrefsFile";
     public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
 
-    @Override
     public void onReceive(Context context, Intent intent) {
         // Log.d(DEBUG_TAG, "Recurring alarm; requesting an action.");
         final SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -46,7 +32,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Date d = new Date();
         String weekDay = (String) android.text.format.DateFormat.format("EEEE", d);
-        /* Get the current time */
+        // Get the current time
         final Calendar cal = Calendar.getInstance();
         int iDay = cal.get(Calendar.DAY_OF_WEEK);
         int iHour = cal.get(Calendar.HOUR_OF_DAY);
@@ -127,7 +113,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             SPeditor.putInt(context.getString(R.string.sp_smsCounter), counter);
             SPeditor.apply();
             final myApp appState = ((myApp)context.getApplicationContext());
-            /* appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
+            appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
 
 	        try {
 	        	sms.sendTextMessage(SMS_DEST_NUMBER, null, s_msg, PendingIntent.getBroadcast(
@@ -151,7 +137,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 	        			context.getString(R.string.com_cnfgErrTxt), Toast.LENGTH_LONG);
 	    	    toast.show();
 	        	// showMsgPopUp(context.getString(R.string.com_cnfgErrTitle), context.getString(R.string.com_cnfgErrTxt));
-	        }     */
+	        }
         }
 	}
 
@@ -166,6 +152,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 		return sHour+":"+sMinute;
 	}
-
+*/
 
 }
