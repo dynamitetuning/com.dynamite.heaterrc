@@ -105,4 +105,5 @@
     </string-array>
     <string name="com_SMSreceived">Antwort vom Gerät mit Telefonnummer:</string>
     <string name="cfg_configsaved">Konfiguration erfolgreich gespeichert</string>
+    <string name="prog_schedule_activated">-Timer wurde aktiviert</string>
 </resources>

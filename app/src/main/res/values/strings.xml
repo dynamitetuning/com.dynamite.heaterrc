@@ -95,6 +95,7 @@
     <string name="prog_friday_initials">Fr</string>
     <string name="prog_saturday_initials">Sa</string>
     <string name="prog_schedule_deactivated">-Schedule has been deactivated</string>
+    <string name="prog_schedule_activated">-Schedule has been activated</string>
     <string name="prog_scheduleToggleON">Schedule ON</string>
     <string name="prog_scheduleToggleOFF">Schedule OFF</string>
     <string name="prog_helpTitle">Help</string>

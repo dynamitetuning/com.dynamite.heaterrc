@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dynamite.heaterrc">
-
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".myApp"
@@ -15,30 +11,16 @@
         android:screenOrientation="portrait">
 
         <receiver
-            android:name=".SMSreceiver"
-            android:enabled="true"
-            android:permission="android.permission.BROADCAST_SMS">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-            </intent-filter>
-        </receiver>
-        <receiver
             android:name=".AlarmReceiver"
             android:enabled="true" />
 
-        <receiver
-            android:name=".BootReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
 
         <activity
             android:name=".SHtabWidget"
-            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,8 +30,9 @@
         </activity>
         <activity
             android:name=".StandHeizungActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,8 +41,9 @@
         </activity>
         <activity
             android:name=".ConfigActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,8 +52,9 @@
         </activity>
         <activity
             android:name=".ProgramActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -78,15 +63,17 @@
         </activity>
         <activity
             android:name=".GPStrackerActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayNotifications">
+        <activity android:name=".DisplayNotifications"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.dynamite.heaterrc.DisplayNotifications" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -94,7 +81,7 @@
         </activity>
         <activity
             android:name=".AlarmDetails"
-            android:label="@string/app_name">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.dynamite.heaterrc.AlarmDetails" />
                 <category android:name="android.intent.category.DEFAULT" />

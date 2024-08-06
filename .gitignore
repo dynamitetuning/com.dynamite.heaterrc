@@ -1,5 +1,6 @@
 # Built application files
 *.apk
+*.aab
 *.ap_
 
 # Files for the Dalvik VM
@@ -11,6 +12,7 @@
 # Generated files
 bin/
 gen/
+/app/release/
 
 # Gradle files
 .gradle/

@@ -104,5 +104,6 @@
     <string name="cfg_configsaved">Configurazione salvata correttamente</string>
     <string name="cfg_tvPrepaidCredit">Credito prepagato del riscaldatore</string>
     <string name="cfg_tvSMScost">Costo di un SMS per il riscaldamento</string>
+    <string name="prog_schedule_activated">-Timer è stato attivato</string>
 
 </resources>

@@ -1,8 +1,8 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 SMSreceiver.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -18,35 +18,26 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-import java.math.BigDecimal;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.telephony.SmsMessage;
-import android.widget.Toast;
-
-public class SMSreceiver extends BroadcastReceiver{
+public class SMSreceiver{
 	// private static final String DEBUG_TAG = "SMSreceiver";
 	public static final String PREFS_NAME = "MyPrefsFile";
-	
+	/*
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		Bundle bundle = intent.getExtras();
 		SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
-// TODO Garbage collected?
+
 		// Log.d(DEBUG_TAG, "Entered onReceive method...");
-        
+
 		try {
 			Object messages[] = (Object[]) bundle.get("pdus");
 			SmsMessage smsMessage[] = new SmsMessage[messages.length];
 			for (int n = 0; n < messages.length; n++) {
 			smsMessage[n] = SmsMessage.createFromPdu((byte[]) messages[n]);
 			}
-	
+
 			// String smsText = smsMessage[0].getMessageBody();
 			String originNumber = smsMessage[0].getDisplayOriginatingAddress();
 			// Log.d(DEBUG_TAG, "Received SMS Text:" + smsText);
@@ -55,7 +46,7 @@ public class SMSreceiver extends BroadcastReceiver{
 			String GPStrackNumber = settings.getString(context.getString(R.string.sp_destNumbGPS), "0");
 			if (heaterNumber.length() > 2){
 				heaterNumber = heaterNumber.substring(2, heaterNumber.length());
-	
+
 				if (originNumber.contains(heaterNumber)){
 					// originating number corresponds to heater number
 					Toast toast = Toast.makeText(context,
@@ -69,9 +60,9 @@ public class SMSreceiver extends BroadcastReceiver{
 			        	BigDecimal defaultValue = new BigDecimal(context.getString(R.string.cfg_prepaidCredit));
 			        	int costcompare = prepaidCredit.compareTo(SMScost);
 			        	boolean showNotify = false;
-			        	if (costcompare>0){		            	
+			        	if (costcompare>0){
 			            	String result = prepaidCredit.subtract(SMScost).toPlainString();
-			            	
+
 			            	SPeditor.putString(context.getString(R.string.sp_prepaidCredit), result);
 			            	SPeditor.commit();
 			        	} else if (costcompare < 0) {
@@ -86,7 +77,7 @@ public class SMSreceiver extends BroadcastReceiver{
 			    			toast2.show();
 			    			toast2.show(); // show twice to increase duration
 			        	}
-			        		
+
 			        	// update the string equivalent
 			        }catch(Exception e) {
 			        	e.printStackTrace();
@@ -109,5 +100,5 @@ public class SMSreceiver extends BroadcastReceiver{
 			// Log.w(DEBUG_TAG, "Exception thrown=" + e.toString());
 			e.printStackTrace();
 		}
-	}
+	}*/
 }
