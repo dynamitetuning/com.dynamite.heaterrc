@@ -1,8 +1,8 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 commonActivity.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -18,51 +18,44 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 public abstract class commonActivity extends Activity{
-	// Variables
-	public static final String SMS_RECIPIENT_EXTRA = "com.example.android.apis.os.SMS_RECIPIENT";
-	public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
+    //public static final String ACTION_SMS_SENT = "com.example.android.apis.os.SMS_SENT_ACTION";
 	public static final String PREFS_NAME = "MyPrefsFile";
-	public BroadcastReceiver bcr;
+	//public BroadcastReceiver bcr;
 	// private static final String DEBUG_TAG = "commonActivity";
 
 	// Methods
-	public void onDestroy(){
+/*	public void onDestroy(){
 		super.onDestroy();
 		try {
 			unregisterReceiver(bcr);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        
-	        final myApp appState = ((myApp)getApplicationContext());
-	        
+        super.onCreate(savedInstanceState);
+
+        getApplicationContext();
+	        /*
 	        try {
 		        // Register broadcast receivers for SMS sent and delivered intents
 		        registerReceiver(bcr = new BroadcastReceiver() {
-		            
+
 		        	@Override
 		            public void onReceive(Context context, Intent intent) {
 		                String message = null;
@@ -87,7 +80,7 @@ public abstract class commonActivity extends Activity{
 		                    message = "Error: Radio off.";
 		                    break;
 		                default:
-		                    message = "Unknown Error.";	
+		                    message = "Unknown Error.";
 		                }
 		                // Log.d(DEBUG_TAG, "Broadcast received="+message);
 		                String temp = settings.getString(getString(R.string.sp_lastAlarm), "-");
@@ -99,17 +92,17 @@ public abstract class commonActivity extends Activity{
 			        		toast.show();
 			        		SPeditor.putString(getString(R.string.sp_lastAlarm), settings.getString(getString(R.string.sp_lastAlarm), "-")+" - "+message).commit();
 		                }
-	
+
 		                try{
 			                // Counter to avoid appearance of multiple popups
-			                if (!appState.getSmsReportState()){ 
+			                if (!appState.getSmsReportState()){
 				                if (error)
 				                	showMsgPopUp("Error",message);
 				                else
 				                	showMsgPopUp("Information",message);
-				                
+
 				                appState.setSmsReportState(true);  // set WAIT_SMS_REPORT
-				                
+
 			                }
 		                } catch (Exception e){
 		                	e.printStackTrace();
@@ -119,11 +112,11 @@ public abstract class commonActivity extends Activity{
 		        }, new IntentFilter(ACTION_SMS_SENT));
 	        } catch (Exception ex) {
 	        	ex.printStackTrace();
-	        }
+	        }*/
 	 }
-	 
+
 	public abstract void onResume(Bundle savedInstaceState);
-	 
+
 	public void showMsgPopUp(String s_title, String s_msg){
 		// build dialog box to display message
 	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -131,42 +124,37 @@ public abstract class commonActivity extends Activity{
 	    builder.setMessage(s_msg)
 	        .setCancelable(false)
 	        .setTitle(s_title)
-	        .setPositiveButton(posBtnTxt, new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int id) {
-	            dialog.dismiss();
-	            }
-	        });
+	        .setPositiveButton(posBtnTxt, (dialog, id) -> dialog.dismiss());
 	    final AlertDialog alert = builder.create();
 	    alert.show();
 	}
-	
+
 	public void sendSMS(String s_msg){
 		String PREFS_NAME = "MyPrefsFile";
     	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	sendSMS2numb(settings.getString(getString(R.string.sp_destNumb), "0"), s_msg, false);
     }
-	
+
 	public void sendSMS2numb (String s_destNumb, String s_msg, boolean GPStracker){
-		SmsManager sms = SmsManager.getDefault();
-    	myApp appState = ((myApp)getApplicationContext());
+		//SmsManager sms = SmsManager.getDefault();
+    	//myApp appState = ((myApp)getApplicationContext());
     	String PREFS_NAME = "MyPrefsFile";
     	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor SPeditor = settings.edit();
-        String SMS_DEST_NUMBER = s_destNumb;
-        
+        SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true).apply();
+
         // Log.d("commonActivity:", "Destination: " + SMS_DEST_NUMBER);
         // Log.d("commonActivity:","Message: " + s_msg);
-        
+
         int myNum = 0;
         try {
     	    myNum = Integer.parseInt(settings.getString(getString(R.string.sp_maxSMScount), getString(R.string.cfg_maxSMScount)));
     	} catch(NumberFormatException nfe) {
     		// Log.w("ConfigActivity:", "NumberFormatException: " + nfe.getMessage());
     		nfe.printStackTrace();
-    		myNum = 0;
-    	}
+        }
         try {
-	        if((SMS_DEST_NUMBER.contentEquals("0"))||(SMS_DEST_NUMBER == null)){
+	        if(s_destNumb.contentEquals("0")){
 	        	// Log.d("myApp:", "Config Error, destination is empty");
 	        	showMsgPopUp(getString(R.string.com_cnfgErrTitle), getString(R.string.com_cnfgErrTxt));
 	        	if (GPStracker)
@@ -184,17 +172,17 @@ public abstract class commonActivity extends Activity{
 	        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
 	        	SPeditor.commit();
 	        }
-	        else {  // Send SMS only if destination number has been entered       	
-	        	
-	        	
-	        	
+	        else {  // Send SMS only if destination number has been entered
+
+
+
 	        	// Increment SMS counter
 	            int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
 	            counter++;
-	            
+
 	            SPeditor.putInt(getString(R.string.sp_smsCounter), counter);
 	            SPeditor.commit();
-	                        
+	            /*
 	        	appState.setSmsReportState(false); // reset flag WAIT_SMS_REPORT
 		        try {
 		        	sms.sendTextMessage(SMS_DEST_NUMBER, null, s_msg, PendingIntent.getBroadcast(
@@ -209,7 +197,7 @@ public abstract class commonActivity extends Activity{
 		        	SPeditor.commit();
 		        	showMsgPopUp(getString(R.string.com_cnfgErrTitle), getString(R.string.com_cnfgErrTxt));
 		       	}catch(NullPointerException npe){
-		        	// Log.w("StandHeizungActivity:", "Exception thrown=" + npe.toString()); 
+		        	// Log.w("StandHeizungActivity:", "Exception thrown=" + npe.toString());
 		        	npe.printStackTrace();
 		        	if (GPStracker)
 		        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
@@ -217,13 +205,13 @@ public abstract class commonActivity extends Activity{
 		        		SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
 		        	SPeditor.commit();
 		        	showMsgPopUp(getString(R.string.com_cnfgErrTitle), getString(R.string.com_cnfgErrTxt));
-		        }     
+		        }    */
 	        }
         } catch (Exception e){
         	e.printStackTrace();
         }
 	}
-	
+
 	public void showInfo(PackageInfo pInfo){
 		final String PREFS_NAME = "MyPrefsFile";
 	    final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -238,64 +226,60 @@ public abstract class commonActivity extends Activity{
     	int i_counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
     	String s_prepaidCreditTitle = getString(R.string.com_PrepaidCreditTitle);
     	String s_prepaidCredit = settings.getString(getString(R.string.sp_prepaidCredit), getString(R.string.cfg_prepaidCredit));
-		
+
     	// showMsgPopUp(s_appname, s_versionPre+s_version+"\n"+s_authortitle+s_authorname+"\n"+s_smsCounter+i_counter);
-    	
+
     	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    String posBtnTxt = getString(R.string.com_pos_btn);
 	    builder.setMessage(s_versionPre+s_version+"\n"+s_authortitle+s_authorname+"\n"+s_smsCounter+i_counter+"\n"+s_prepaidCreditTitle+s_prepaidCredit)
 	        .setCancelable(false)
 	        .setTitle(s_appname)
-	        .setNegativeButton(getString(R.string.com_reset_btn), new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int id) {
-	            	// Check phone number and enable buttons
-	            	if (isPhoneNumberCorrect(settings.getString(getString(R.string.sp_destNumb), getString(R.string.cfg_phonenumber)))){
-			        	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true);
-			        }
-		        	// Reset the SMS counter
-	            	SPeditor.putInt(getString(R.string.sp_smsCounter), 0).commit();
-	            	dialog.dismiss();
-	            	Toast toast = Toast.makeText(getBaseContext(),getString(R.string.com_reset_txt), Toast.LENGTH_LONG);
-	    					toast.show();
-	            }
-	        })
-	        .setPositiveButton(posBtnTxt, new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int id) {
-	            	dialog.dismiss();
-	            }
-	        });
+	        .setNegativeButton(getString(R.string.com_reset_btn), (dialog, id) -> {
+                // Check phone number and enable buttons
+                if (isPhoneNumberCorrect(settings.getString(getString(R.string.sp_destNumb), getString(R.string.cfg_phonenumber)))){
+                    SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), true);
+                }
+                // Reset the SMS counter
+                SPeditor.putInt(getString(R.string.sp_smsCounter), 0).apply();
+                dialog.dismiss();
+                Toast toast = Toast.makeText(getBaseContext(),getString(R.string.com_reset_txt), Toast.LENGTH_LONG);
+                        toast.show();
+            })
+	        .setPositiveButton(posBtnTxt, (dialog, id) -> dialog.dismiss());
 	    final AlertDialog alert = builder.create();
 	    alert.show();
-    	
+
 	}
-	
-	 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     	PackageInfo pInfo = null;
 
-	     // Make Package Info available       
+	     // Make Package Info available
 	    	try {
 	    		pInfo = getPackageManager().getPackageInfo("com.dynamite.heaterrc",
 	    		PackageManager.GET_META_DATA);
-	    		
+
 	    	} catch (NameNotFoundException e) {
 	    		// Log.w("StandHeizungActivity:", "NameNotFound: " + e.getMessage());
 	    		e.printStackTrace();
 	    	}
-    	
+
     	// Handle item selection
         switch (item.getItemId()) {
             case R.id.exit:
                 System.exit(0);
                 return true;
             case R.id.info:
+                assert pInfo != null;
                 showInfo(pInfo);
                 return true;
             case R.id.restore:
@@ -305,7 +289,7 @@ public abstract class commonActivity extends Activity{
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
     /*
      * Method is creating a popup dialog asking whether the restore shall really be executed.
      */
@@ -317,30 +301,23 @@ public abstract class commonActivity extends Activity{
 	    builder.setMessage(s_msg)
 	        .setCancelable(true)
 	        .setTitle(s_title)
-	        .setNegativeButton(getString(R.string.com_cancelbutton), new DialogInterface.OnClickListener() {
-				
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			})
-	        .setPositiveButton(getString(R.string.com_restorebutton), new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int id) {
-	            	SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-	                SharedPreferences.Editor SPeditor = settings.edit();
-	            	int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
-	            	SPeditor.clear().commit();
-	            	SPeditor.putInt(getString(R.string.sp_smsCounter), counter);
-	            	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
-	            	SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
-	            	SPeditor.commit();
-	            	dialog.dismiss();
-	            }
-	        });
+	        .setNegativeButton(getString(R.string.com_cancelbutton), (dialog, which) -> dialog.dismiss())
+	        .setPositiveButton(getString(R.string.com_restorebutton), (dialog, id) -> {
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                SharedPreferences.Editor SPeditor = settings.edit();
+                int counter = settings.getInt(getString(R.string.sp_smsCounter), 0);
+                SPeditor.clear().apply();
+                SPeditor.putInt(getString(R.string.sp_smsCounter), counter);
+                SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabled), false);
+                SPeditor.putBoolean(getString(R.string.sp_sendBtnEnabledGPS), false);
+                SPeditor.commit();
+                dialog.dismiss();
+            });
 	    final AlertDialog alert = builder.create();
 	    alert.show();
     }
-    
-    
+
+
     /*
      * Method is creating a popup dialog asking whether the restore shall really be executed.
      */
@@ -353,72 +330,59 @@ public abstract class commonActivity extends Activity{
 	    builder.setMessage(s_msg)
 	        .setCancelable(true)
 	        .setTitle(s_title)
-	        .setNegativeButton(s_negBtntxt, new DialogInterface.OnClickListener() {
-				
-				public void onClick(DialogInterface dialog, int which) {
-					SPeditor.putInt(s_prefs, -1).commit();
-					dialog.dismiss();
-				}
-			})
-	        .setPositiveButton(s_posBtntxt, new DialogInterface.OnClickListener() {
-	            public void onClick(DialogInterface dialog, int id) {
-					SPeditor.putInt(s_prefs, 1).commit();
-	            	dialog.dismiss();
-	            }
-	        });
+	        .setNegativeButton(s_negBtntxt, (dialog, which) -> {
+                SPeditor.putInt(s_prefs, -1).apply();
+                dialog.dismiss();
+            })
+	        .setPositiveButton(s_posBtntxt, (dialog, id) -> {
+                SPeditor.putInt(s_prefs, 1).commit();
+                dialog.dismiss();
+            });
 	    final AlertDialog alert = builder.create();
-	    alert.show(); 
+	    alert.show();
     }
-    
+
     /*
 	 * Method is checking weather the given phone number is correct
-	 * 
+	 *
 	 * Returns: false if value is not ok
 	 * 			true if value is ok
 	 */
 	public boolean isPhoneNumberCorrect(String number){
-		if (number.compareTo("0") == 0)
-			return false;
-		if (number.compareTo("") == 0)
-			return false;
-		if (number.contains(";"))
-			return false;
-		if (number.contains(","))
-			return false;
-		if (number.contains("."))
-			return false;
-		if (number.contains(":"))
-			return false;
-		if (number.contains("/"))
-			return false;
-		if (number.contains("("))
-			return false;
-		if (number.contains(")"))
-			return false;
-		
+		switch (number){
+            case "0":
+            case "":
+            case ";":
+            case ",":
+            case ".":
+            case ":":
+            case "/":
+            case "(":
+                return false;
+            default: return !number.contains(")");
+        }
 		// else return true
-		return true;
-	}
-	
+    }
+
 	public void showHelp(){
 		String helpText = getString(R.string.helptext);
 		showMsgPopUp(getString(R.string.sh_helpbutton), helpText);
 	}
-	
+
 	public void showHelpGPS(){
 		String helpText = getString(R.string.helptextGPS);
 		showMsgPopUp(getString(R.string.sh_helpbutton), helpText);
 	}
-	
+
 	public String int2time(int hour, int minute){
-		String sHour = hour+"";
-		String sMinute = minute+"";
-		
+		String sHour = String.valueOf(hour);
+		String sMinute = String.valueOf(minute);
+
 		if (sHour.length() < 2)
 			sHour = "0"+sHour;
 		if (sMinute.length() < 2)
 			sMinute = "0"+sMinute;
-		
+
 		return sHour+":"+sMinute;
 	}
 }

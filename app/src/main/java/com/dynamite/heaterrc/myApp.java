@@ -1,5 +1,5 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 myApp.java
 
 Copyright (C) 2015  dynamitetuning
@@ -18,45 +18,39 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.format.Time;
-import android.widget.Toast;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class myApp extends Application{
-	// private static final String DEBUG_TAG = "myApp";
-	private boolean WAIT_SMS_REPORT=false;
-	public static final String PREFS_NAME = "MyPrefsFile";
-
+    public static final String PREFS_NAME = "MyPrefsFile";
+/*
 	public boolean getSmsReportState(){
 		return WAIT_SMS_REPORT;
 	}
-	
+
 	public void setSmsReportState(boolean b){
-		this.WAIT_SMS_REPORT=b;
-	}
-	
+        // private static final String DEBUG_TAG = "myApp";
+    }
+*/
 	public void setRecurringAlarm(Context context) {
         // we know mobiletuts updates at right around 1130 GMT.
         // let's grab new stuff at around 11:45 GMT, inexactly
     	// Log.d(DEBUG_TAG, "setRecurringAlarm called ");
-    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+/*    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
     	final SharedPreferences.Editor SPeditor = settings.edit();
     	final Calendar cal = Calendar.getInstance();
-    	
+
         Calendar updateTime = Calendar.getInstance();
         //updateTime.setTimeZone(TimeZone.getTimeZone("GMT+1"));
         updateTime.setTimeZone(TimeZone.getDefault());
         int dayOfWeek = getNextWeekDay();
-        
+
         Calendar calendar = Calendar.getInstance();
     	int day = calendar.get(Calendar.DAY_OF_WEEK);
 
@@ -77,7 +71,7 @@ public class myApp extends Application{
 				Context.ALARM_SERVICE);
 		AlarmManager alarms2 =(AlarmManager) getSystemService(
 				Context.ALARM_SERVICE);
-       
+
         if (dayOfWeek > 0)
         	updateTime.set(Calendar.DAY_OF_WEEK, dayOfWeek);
         else if (dayOfWeek < 0){
@@ -85,34 +79,38 @@ public class myApp extends Application{
 				"No weekday has been selected!", Toast.LENGTH_LONG);
 			toast.show();
 			SPeditor.putBoolean(getString(R.string.sp_schedule_active), false);
-	        SPeditor.putString(getString(R.string.sp_nextAlarm), "-"); 
-	        SPeditor.commit();
-	        try {
-				alarms.cancel(recurringSendSMS);
-				alarms2.cancel(recurringSendSMS);
+            SPeditor.putString(getString(R.string.sp_nextAlarm), "-");
+            SPeditor.commit();
+            try {
+                assert alarms != null;
+                alarms.cancel(recurringSendSMS);
+                assert alarms2 != null;
+                alarms2.cancel(recurringSendSMS);
 			} catch (NullPointerException npe){
-	        	npe.printStackTrace();
+                npe.printStackTrace();
 			}
-			return;
+            return;
         } else {
-        	dayOfWeek = day;
+            dayOfWeek = day;
         }
         int hourOfDay = settings.getInt(int2spWeekDay(dayOfWeek)+"Hour", 0);
         int minute = settings.getInt(int2spWeekDay(dayOfWeek)+"Minute", 0);
         updateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
         updateTime.set(Calendar.MINUTE, minute);
         updateTime.set(Calendar.SECOND,0);
-        
+
         // Log.d(DEBUG_TAG, "setRecurringAlarm called for "+int2spWeekDay(dayOfWeek)+" "+int2time(hourOfDay,minute)+" Day No:"+dayOfWeek);
-        
+
         SPeditor.putString(getString(R.string.sp_nextAlarm), int2WeekDay(dayOfWeek)+" "+int2time(hourOfDay,minute))
         	.commit();
-
+*/
         /* setRepeating(int type, long triggerAtMillis, long intervalMillis, PendingIntent operation)
         	Schedule a repeating alarm. */
-        long checkTime = updateTime.getTimeInMillis()/1000;
+
+        //long checkTime = updateTime.getTimeInMillis()/1000;
         // check if time is in the past and correct it.
         /* Get the current time */
+        /*
         long actualTime = cal.getTimeInMillis()/1000;
         if (actualTime > checkTime){
         	// Shift for one week
@@ -120,32 +118,34 @@ public class myApp extends Application{
         	updateTime.setTimeInMillis((checkTime+7*24*60*60)*1000);
         }
         try {
-			alarms.set(AlarmManager.RTC_WAKEUP,
+            assert alarms != null;
+            alarms.set(AlarmManager.RTC_WAKEUP,
 					updateTime.getTimeInMillis(), recurringSendSMS);
-			alarms2.set(AlarmManager.RTC_WAKEUP,
+            assert alarms2 != null;
+            alarms2.set(AlarmManager.RTC_WAKEUP,
 					updateTime.getTimeInMillis(), displayIntent);
 			// Log.d(DEBUG_TAG, "setRecurringAlarm="+updateTime.getTimeInMillis());
 		} catch (NullPointerException npe){
         	npe.printStackTrace();
-		}
+		} */
     }
-	
+
 	public int getNextWeekDay (){
 	    	final SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-	    	
+
 	    	Time t = new Time();
-	    	int hour = -1;
-	    	int minute = -1;
-	    	t.setToNow();	    	
-	    	
+	    	int hour;
+	    	int minute;
+	    	t.setToNow();
+
 	    	Calendar calendar = Calendar.getInstance();
 	    	int day = calendar.get(Calendar.DAY_OF_WEEK);
 	    	String weekDay=int2spWeekDay(day);
-	    	
+
 	    	// Log.d(DEBUG_TAG, "Todays Weekday is = "+day+"="+int2WeekDay(day)+"="+weekDay);
-	    	
-	    	boolean isTodayActive = settings.getBoolean(weekDay, false);
-	    	if (isTodayActive){
+
+            boolean isTodayActive = settings.getBoolean(weekDay, false);
+            if (isTodayActive){
 	    		hour = settings.getInt(weekDay+"Hour", -1);
 	    		minute = settings.getInt(weekDay+"Minute", -1);
 	    		if (t.hour < hour){
@@ -165,45 +165,43 @@ public class myApp extends Application{
 	    			// return StringWeekDay2int(weekDay);
 	    		}
 	    	}
-	    	
+
     	// Find out which day is coming next
-    	for (int i=day+1; i<8; i++){
+        for (int i=day+1; i<8; i++){
     		if (settings.getBoolean(int2spWeekDay(i), false)){
     			return i;
     		}
     	}
-    	for (int i=1; i<=day; i++){
+        for (int i=1; i<=day; i++){
     		if (settings.getBoolean(int2spWeekDay(i), false)){
     			return i;
     		}
     	}
-    	
-    	return -1;
+        return -1;
 	}
-	
+
 	private String int2time(int hour, int minute){
-		String sHour = hour+"";
-		String sMinute = minute+"";
-		
+		String sHour = String.valueOf(hour);
+		String sMinute = String.valueOf(minute);
+
 		if (sHour.length() < 2)
 			sHour = "0"+sHour;
 		if (sMinute.length() < 2)
 			sMinute = "0"+sMinute;
-		
+
 		return sHour+":"+sMinute;
 	}
-	
+
 	public String int2WeekDay (int day){
-		Date d = new Date();
+		Date d;
 		if ((day > 0)&&(day < 8))
 			d = new Date(113, 8, day); // 1.Sept.2013=Sunday
 		else
-			return null;	
-		String weekDay = (String) android.text.format.DateFormat.format("EEEE", d);
-		// Log.d(DEBUG_TAG, "int2WeekDay conversion: "+day+"="+weekDay+d.toString());
-		return weekDay;
+			return null;
+        // Log.d(DEBUG_TAG, "int2WeekDay conversion: "+day+"="+weekDay+d.toString());
+		return (String) android.text.format.DateFormat.format("EEEE", d);
 	}
-	
+
 	public String int2spWeekDay (int day){
 		String result;
 		switch (day){
@@ -215,7 +213,7 @@ public class myApp extends Application{
 			break;
 		case 3:
 			result = getString(R.string.sp_tuesday);
-			break;	
+			break;
 		case 4:
 			result = getString(R.string.sp_wednesday);
 			break;
@@ -229,9 +227,9 @@ public class myApp extends Application{
 			result = getString(R.string.sp_saturday);
 			break;
 		default:
-			result = null;	
+			result = null;
 		}
-		
+
 		return result;
 	}
 }

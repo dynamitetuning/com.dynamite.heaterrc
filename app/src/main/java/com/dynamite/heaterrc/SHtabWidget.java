@@ -1,8 +1,8 @@
 package com.dynamite.heaterrc;
-/* 
+/*
 SHtabWidget.java
 
-Copyright (C) 2015  dynamitetuning
+Copyright (C) 2024  dynamitetuning
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -38,7 +38,7 @@ public class SHtabWidget extends TabActivity {
 	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
 	    Intent intent;  // Reusable Intent for each tab
 
-	    // Create an Intent to launch an Activity for the tab (to be reused)	    
+	    // Create an Intent to launch an Activity for the tab (to be reused)
 	    intent = new Intent().setClass(this, ConfigActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
@@ -59,15 +59,15 @@ public class SHtabWidget extends TabActivity {
 	                      res.getDrawable(R.drawable.ic_tab_songs))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
-	    
+
 	    intent = new Intent().setClass(this, GPStrackerActivity.class);
 	    spec = tabHost.newTabSpec("GPS-Tracker").setIndicator(getString(R.string.tab_gpstrack_name),
 	                      res.getDrawable(R.drawable.ic_tab_gps))
 	                  .setContent(intent);
-	    // Enable this tab only if option is activated in the config. 
+	    // Enable this tab only if option is activated in the config.
 	    if (settings.getBoolean(getString(R.string.sp_GPStrackerTab), false))
 	    	tabHost.addTab(spec);
-	    
+
 	    tabHost.setCurrentTab(2);
 	}
 
